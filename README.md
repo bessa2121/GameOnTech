@@ -1,6 +1,78 @@
 # GameOnTech
 Hackathon - OnBoarding
 
+# Onboarding Corporativo – Portal do Colaborador
+
+## 📌 Visão Geral
+
+Este projeto tem como objetivo resolver um problema real e recorrente em empresas:  
+**onboardings mal estruturados**, onde novos colaboradores entram sem clareza de função, rotina, expectativas e acompanhamento.
+
+A aplicação simula um **portal corporativo de onboarding**, focado especialmente em **estagiários e desenvolvedores júnior**, oferecendo visibilidade, organização e feedback estruturado desde o primeiro dia.
+
+---
+
+## 🎯 Problema
+
+Em muitos cenários reais:
+- O colaborador chega e não sabe o que fazer
+- Não entende sua função real
+- Não sabe como evoluir na empresa
+- Não existe acompanhamento claro
+- O onboarding depende apenas de conversas informais
+
+Isso gera:
+- Baixa produtividade
+- Frustração
+- Falta de engajamento
+- Desorganização interna
+
+---
+
+## 💡 Solução Proposta
+
+Criar um **sistema de onboarding corporativo** que centraliza:
+
+- 📅 Cronograma de eventos e treinamentos  
+- ✅ Trabalhos e tarefas atribuídas  
+- 🧾 Logs de atividades e progresso  
+- 📜 Políticas da empresa  
+- 💬 Feedback estruturado sobre desempenho e evolução  
+
+Tudo conectado a um **processo de onboarding**, com progresso calculado automaticamente.
+
+---
+
+## 🧠 Funcionalidades Principais
+
+### Facilitador de Rotina
+- Logs de atividades
+- Trabalhos atribuídos
+- Cronograma de eventos
+- Políticas da empresa
+
+### Feedback e Evolução Profissional
+- Como estou trabalhando?
+- Onde posso melhorar?
+- Quais projetos estou envolvido?
+- Qual minha função real dentro da empresa?
+- Como posso evoluir?
+
+---
+
+## 🏗️ Arquitetura
+
+```text
+[ React (Front-end) ]
+        |
+        | REST API (JSON)
+        v
+[ Spring Boot (Back-end) ]
+        |
+        v
+[ MySQL (Banco de Dados) ]
+```
+
 # Tipos de Conventional Commits
 
 ## Principais tipos
