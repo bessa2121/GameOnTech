@@ -1,3 +1,39 @@
 spring:
   application:
     name: GameOnTech
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/gameon?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+security:
+  jwt:
+    secret-key: 08331e08c8aae0f589463fbe22269cf5
+    expiration: 86400000
+
