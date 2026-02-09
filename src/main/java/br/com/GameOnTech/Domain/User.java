@@ -28,9 +28,6 @@ public class User implements UserDetails {
     @JdbcTypeCode(SqlTypes.CHAR)
     private UUID id;
 
-    @Column(name = "name")
-    private String userName;
-
     @Column(name = "email", unique = true, nullable = false)
     private String userEmail;
 

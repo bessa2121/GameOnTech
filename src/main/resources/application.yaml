@@ -32,8 +32,6 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
 
-security:
-  jwt:
-    secret-key: 08331e08c8aae0f589463fbe22269cf5
-    expiration: 86400000
-
+web:
+  resources:
+    static-locations: classpath:/static/

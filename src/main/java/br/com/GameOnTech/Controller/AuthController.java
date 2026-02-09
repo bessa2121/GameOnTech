@@ -1,9 +1,11 @@
 package br.com.GameOnTech.Controller;
 
-import br.com.GameOnTech.security.JwtService;
-import lombok.Data;
+import br.com.GameOnTech.Dto.UserRequestDTO;
+import br.com.GameOnTech.Dto.UserResponseDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,36 +13,27 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtService jwtService) {
+    public AuthController(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
-        this.jwtService = jwtService;
     }
 
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest request) {
-
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
-
-        String token = jwtService.generateToken(request.getEmail());
-
-        return new LoginResponse(token);
-    }
-
-    @Data
-    static class LoginRequest {
-        private String email;
-        private String password;
-    }
-
-    @Data
-    static class LoginResponse {
-        private final String token;
+    public ResponseEntity<UserResponseDTO> login(@RequestBody UserRequestDTO request) {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.userEmail(),
+                            request.password()
+                    )
+            );
+            // Sucesso: retornar UserResponseDTO com status 200
+            UserResponseDTO response = new UserResponseDTO("Login efetuado", true);
+            return ResponseEntity.ok(response);
+        } catch (AuthenticationException e) {
+            // Erro: retornar UserResponseDTO com status 401
+            UserResponseDTO response = new UserResponseDTO("Email ou Senha inválido", false);
+            return ResponseEntity.status(401).body(response);
+        }
     }
 }

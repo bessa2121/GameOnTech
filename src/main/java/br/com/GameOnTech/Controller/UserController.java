@@ -8,27 +8,32 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
+    /*
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody User user) {
-        // A senha será codificada dentro do UserService
-        return userService.createUser(user);
+        try {
+            return userService.createUser(user);
+        } catch (Exception e) {
+            throw new RuntimeException("Error creating user: " + e.getMessage());
+        }
     }
+    */
 
-    // somente gerente futuramente
-    @GetMapping ("/getAll")
+    // Somente gerente futuramente (adicione @PreAuthorize("hasRole('GERENTE')") se usar roles)
+    @GetMapping("/getAll")
     public List<User> getAllUsers() {
-        return userService.getAllUsers();
+        try {
+            return userService.getAllUsers();
+        } catch (Exception e) {
+            throw new RuntimeException("Error fetching users: " + e.getMessage());
+        }
     }
 }

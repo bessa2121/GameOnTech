@@ -1,6 +1,5 @@
 package br.com.GameOnTech.Config;
 
-import br.com.GameOnTech.Security.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,16 +10,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SecurityConfig {
-
-    private final JwtAuthFilter jwtAuthFilter;
-
-    public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
-        this.jwtAuthFilter = jwtAuthFilter;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -55,24 +47,21 @@ public class SecurityConfig {
                                 "/logs"
                         ).permitAll()
 
-                        // 🔓 arquivos estáticos
+                        // 🔓 arquivos estáticos (ajustado para caminhos resolvidos pelo Thymeleaf)
                         .requestMatchers(
-                                "/static/css/**",
-                                "/static/js/**",
-                                "/img/**"
+                                "/css/**",  // Permite /css/palette.css, etc.
+                                "/js/**",   // Permite /js/progress-chart.js, etc.
+                                "/assets/**"  // Permite /assets/front.png, /assets/*.svg, etc.
                         ).permitAll()
 
-                        // 🔓 API pública
+                        // 🔓 API pública (mesmo sem JWT, permite endpoints)
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/users").permitAll()
 
-                        // 🔒 resto protegido por JWT
-                        .anyRequest().authenticated()
-                )
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                        // 🔓 Permite tudo o resto (remove proteção, deixa público)
+                        .anyRequest().permitAll()
+                );
 
         return http.build();
     }
-
-
 }

@@ -11,11 +11,6 @@ public class ViewController {
         return "index";
     }
 
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
-
     @GetMapping("/login")
     public String login() {
         return "index"; // ou login.html se existir
@@ -50,4 +45,20 @@ public class ViewController {
     public String logs() {
         return "logs";
     }
+
+    @GetMapping("/feedback")
+    public String feedback() {
+        return "feedback";
+    }
+
+    @GetMapping("/conversa-gerente")
+    public String conversaGerente() {
+        return "conversa-gerente";
+    }
+
+    @GetMapping("/tarefas")
+    public String tarefas() {
+        return "tarefas";
+    }
+
 }

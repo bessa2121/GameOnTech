@@ -1,5 +1,6 @@
 package br.com.GameOnTech.Dto;
 
 public record UserResponseDTO(
-        String userEmail
-){}
+        String message,
+        boolean success
+) {}

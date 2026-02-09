@@ -21,7 +21,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Transactional
+    /*@Transactional
     public User createUser(User user) {
         // Validação simples: não permitir emails duplicados
         if (userRepository.findByUserEmail(user.getUserEmail()).isPresent()) {
@@ -32,7 +32,7 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return userRepository.save(user);
-    }
+    }*/
 
     // somente gerente
     public List<User> getAllUsers() {
