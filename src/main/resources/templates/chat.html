@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente Virtual - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/chat-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('chat')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Assistente Virtual</h2>
+                <p>Tire duvidas rapidamente sobre processos e onboarding</p>
+            </header>
+
+            <main class="main-content chat-content">
+                <!-- Info section -->
+                <section class="chat-info">
+                    <p>💡 <strong>Dica:</strong> Use o assistente para resolver duvidas do dia a dia e encontrar atalhos importantes.</p>
+                </section>
+
+                <!-- Chat interface -->
+                <div class="chat-container">
+                    <!-- Header da conversa -->
+                    <div class="chat-header">
+                        <div class="chat-contact">
+                            <div class="contact-avatar">AV</div>
+                            <div class="contact-info">
+                                <h4>Assistente Virtual</h4>
+                                <p>Atendimento interno</p>
+                            </div>
+                        </div>
+                        <button class="btn-reset" onclick="resetChat()">🔄 Resetar Chat</button>
+                    </div>
+
+                    <!-- Área de mensagens -->
+                    <div class="messages-area" id="messagesArea">
+                        <div class="message-group system">
+                            <div class="message">
+                                <p>Ola! Estou aqui para ajudar. Qual duvida voce gostaria de resolver?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sugestões de perguntas -->
+                    <div class="quick-replies">
+                        <button class="reply-btn" onclick="sendMessage('Quais sao minhas proximas tarefas hoje?')">
+                            ✅ Proximas tarefas
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Como acesso e-mail corporativo e VPN?')">
+                            🔐 Acesso e VPN
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Onde encontro as politicas e documentos internos?')">
+                            📄 Politicas e docs
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Qual e o fluxo para abrir chamado de suporte?')">
+                            🛠 Suporte tecnico
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Como registrar ponto e solicitar ferias?')">
+                            🗓 RH e ponto
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Quais cursos obrigatorios devo concluir?')">
+                            🎓 Cursos obrigatorios
+                        </button>
+                    </div>
+
+                    <!-- Input de mensagem -->
+                    <div class="message-input-container">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            class="message-input" 
+                            placeholder="Digite sua pergunta..." 
+                            onkeypress="handleKeyPress(event)"
+                        >
+                        <button class="btn-send" onclick="sendMessage()">➤ Enviar</button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script th:src="@{/js/chat-simulator.js}"></script>
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

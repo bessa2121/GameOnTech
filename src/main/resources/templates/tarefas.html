@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/tarefas-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('tarefas')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Minhas Tarefas</h2>
+                <p>Tarefas que você deve realizar durante o onboarding</p>
+            </header>
+
+            <main class="main-content tarefas-content">
+                <!-- Abas de filtro -->
+                <div class="tarefas-tabs">
+                    <button class="tab-btn active" data-filter="todos">📋 Todas</button>
+                    <button class="tab-btn" data-filter="andamento">⚡ Em Andamento</button>
+                    <button class="tab-btn" data-filter="concluido">✓ Concluídas</button>
+                    <button class="tab-btn" data-filter="cancelado">✕ Canceladas</button>
+                </div>
+
+                <!-- Lista de tarefas -->
+                <section class="tarefas-section">
+                    <!-- Tarefa 1 - Concluída -->
+                    <div class="tarefa-item status-concluido">
+                        <div class="tarefa-checkbox">
+                            <input type="checkbox" checked disabled>
+                        </div>
+                        <div class="tarefa-info">
+                            <h4>Assinar contrato de trabalho</h4>
+                            <p class="tarefa-descrição">Assine e devolva o contrato para o RH</p>
+                            <div class="tarefa-meta">
+                                <span class="meta-badge">📅 1 de fev</span>
+                                <span class="meta-badge">🎯 Alta prioridade</span>
+                            </div>
+                        </div>
+                        <div class="tarefa-status">
+                            <span class="status-badge concluido">Concluída</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarefa 2 - Em andamento -->
+                    <div class="tarefa-item status-andamento">
+                        <div class="tarefa-checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <div class="tarefa-info">
+                            <h4>Completar onboarding técnico</h4>
+                            <p class="tarefa-descrição">Configurar ambiente de desenvolvimento e ferramentas</p>
+                            <div class="tarefa-meta">
+                                <span class="meta-badge">📅 5 de fev</span>
+                                <span class="meta-badge">🎯 Alta prioridade</span>
+                            </div>
+                            <div class="tarefa-progresso">
+                                <div class="progresso-bar">
+                                    <div class="progresso-fill" style="width: 70%;"></div>
+                                </div>
+                                <span class="progresso-texto">70% concluído</span>
+                            </div>
+                        </div>
+                        <div class="tarefa-status">
+                            <span class="status-badge andamento">Em Andamento</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarefa 3 - Em andamento -->
+                    <div class="tarefa-item status-andamento">
+                        <div class="tarefa-checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <div class="tarefa-info">
+                            <h4>Estudar documentação da empresa</h4>
+                            <p class="tarefa-descrição">Ler e entender a documentação principal de projetos</p>
+                            <div class="tarefa-meta">
+                                <span class="meta-badge">📅 10 de fev</span>
+                                <span class="meta-badge">🎯 Média prioridade</span>
+                            </div>
+                            <div class="tarefa-progresso">
+                                <div class="progresso-bar">
+                                    <div class="progresso-fill" style="width: 45%;"></div>
+                                </div>
+                                <span class="progresso-texto">45% concluído</span>
+                            </div>
+                        </div>
+                        <div class="tarefa-status">
+                            <span class="status-badge andamento">Em Andamento</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarefa 4 - Cancelada -->
+                    <div class="tarefa-item status-cancelado">
+                        <div class="tarefa-checkbox">
+                            <input type="checkbox" disabled>
+                        </div>
+                        <div class="tarefa-info">
+                            <h4>Participar da reunião de planejamento antigo</h4>
+                            <p class="tarefa-descrição">Esta reunião foi remarcada e cancelada</p>
+                            <div class="tarefa-meta">
+                                <span class="meta-badge">📅 3 de fev</span>
+                                <span class="meta-badge">🎯 Baixa prioridade</span>
+                            </div>
+                        </div>
+                        <div class="tarefa-status">
+                            <span class="status-badge cancelado">Cancelada</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarefa 5 - Pendente -->
+                    <div class="tarefa-item status-andamento">
+                        <div class="tarefa-checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <div class="tarefa-info">
+                            <h4>Primeira revisão de código</h4>
+                            <p class="tarefa-descrição">Submeter seu primeiro PR para revisão de código</p>
+                            <div class="tarefa-meta">
+                                <span class="meta-badge">📅 12 de fev</span>
+                                <span class="meta-badge">🎯 Alta prioridade</span>
+                            </div>
+                        </div>
+                        <div class="tarefa-status">
+                            <span class="status-badge andamento">Pendente</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarefa 6 - Concluída -->
+                    <div class="tarefa-item status-concluido">
+                        <div class="tarefa-checkbox">
+                            <input type="checkbox" checked disabled>
+                        </div>
+                        <div class="tarefa-info">
+                            <h4>Treinamento de segurança</h4>
+                            <p class="tarefa-descrição">Completar curso obrigatório de segurança da informação</p>
+                            <div class="tarefa-meta">
+                                <span class="meta-badge">📅 4 de fev</span>
+                                <span class="meta-badge">🎯 Média prioridade</span>
+                            </div>
+                        </div>
+                        <div class="tarefa-status">
+                            <span class="status-badge concluido">Concluída</span>
+                        </div>
+                    </div>
+
+                    <!-- Tarefa 7 - Pendente -->
+                    <div class="tarefa-item status-andamento">
+                        <div class="tarefa-checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <div class="tarefa-info">
+                            <h4>Configurar e-mail corporativo</h4>
+                            <p class="tarefa-descrição">Acessar portal TI e configurar conta de e-mail</p>
+                            <div class="tarefa-meta">
+                                <span class="meta-badge">📅 1 de fev</span>
+                                <span class="meta-badge">🎯 Alta prioridade</span>
+                            </div>
+                        </div>
+                        <div class="tarefa-status">
+                            <span class="status-badge concluido">Concluída</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Resumo -->
+                <section class="tarefas-summary">
+                    <div class="summary-card">
+                        <h5>📊 Resumo de Tarefas</h5>
+                        <ul class="summary-list">
+                            <li><strong>Total:</strong> 7 tarefas</li>
+                            <li><strong>Concluídas:</strong> <span class="text-concluido">3</span></li>
+                            <li><strong>Em Andamento:</strong> <span class="text-andamento">3</span></li>
+                            <li><strong>Canceladas:</strong> <span class="text-cancelado">1</span></li>
+                            <li><strong>Taxa de Conclusão:</strong> <strong>42.8%</strong></li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/tarefas-filter.js}"></script>
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

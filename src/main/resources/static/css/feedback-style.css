@@ -1,0 +1,332 @@
+/* ========================================
+   DOCUMENTAÇÃO: CSS - Página Feedback
+   ========================================
+   
+   ELEMENTOS PRINCIPAIS:
+   - .feedback-content: Container principal
+   - .feedback-intro: Introdução
+   - .desempenho-section: Seção com gráfico Chart.js
+   - .chart-container: Wrapper para o canvas
+   - .feedbacks-section: Seção de feedbacks recebidos
+   - .feedback-card: Card individual de feedback
+   - .feedback-header: Cabeçalho com avatar, nome, data, rating
+   - .feedback-avatar: Iniciais da pessoa (display: flex, circular)
+   - .feedback-meta: Metadados (nome, data)
+   - .feedback-rating: Estrelas de avaliação
+   - .feedback-body: Conteúdo do feedback (com <strong> para seções)
+   - .objetivos-section: Objetivos de desenvolvimento
+   - .objetivo-item: Item individual com barra de progresso
+   - .progress-bar e .progress-fill: Barra de progresso
+   - .proxima-avaliacao: Seção de próxima avaliação
+   
+   ELEMENTOS HTML USADOS:
+   <canvas id="performanceChart">: Gráfico do Chart.js
+   <div class="feedback-card">: Wrapper de cada feedback
+   <div class="feedback-avatar">: Iniciais (ex: "JP")
+   <h5>: Nomes das pessoas
+   <span class="feedback-rating">: Estrelas (⭐)
+   <p>: Parágrafos com <strong> para seções
+   <div class="objetivo-item">: Cada objetivo
+   <div class="progress-bar">: Container da barra
+   <div class="progress-fill">: Barra preenchida
+   
+   ======================================== */
+
+.feedback-content {
+    padding: 40px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Introdução */
+.feedback-intro {
+    margin-bottom: 40px;
+}
+
+.feedback-intro h3 {
+    font-size: 1.6rem;
+    color: #1F5AA6;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.feedback-intro p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* Seção de desempenho */
+.desempenho-section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.desempenho-section h4 {
+    font-size: 1.2rem;
+    color: #1F5AA6;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+/* Seção de feedbacks */
+.feedbacks-section {
+    margin-bottom: 40px;
+}
+
+.feedbacks-section h4 {
+    font-size: 1.3rem;
+    color: #1F5AA6;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Card de feedback */
+.feedback-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #0FA67B;
+    transition: all 0.3s ease;
+}
+
+.feedback-card:hover {
+    box-shadow: 0 8px 25px rgba(107, 153, 151, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Cabeçalho do feedback */
+.feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Avatar */
+.feedback-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0FA67B 0%, #8B41F2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Metadados do feedback */
+.feedback-meta {
+    flex: 1;
+}
+
+.feedback-meta h5 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0 0 5px 0;
+    font-weight: 700;
+}
+
+.feedback-date {
+    font-size: 0.85rem;
+    color: #95a5a6;
+    margin: 0;
+}
+
+/* Rating */
+.feedback-rating {
+    font-size: 0.95rem;
+    color: #f39c12;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Corpo do feedback */
+.feedback-body p {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.feedback-body p:last-child {
+    margin-bottom: 0;
+}
+
+.feedback-body strong {
+    color: #1F5AA6;
+    font-weight: 700;
+}
+
+/* Seção de objetivos */
+.objetivos-section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.objetivos-section h4 {
+    font-size: 1.3rem;
+    color: #1F5AA6;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Item objetivo */
+.objetivo-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.objetivo-item:last-child {
+    border-bottom: none;
+}
+
+.objetivo-item h5 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.objetivo-item p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin: 0 0 12px 0;
+}
+
+/* Barra de progresso */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0FA67B 0%, #8B41F2 100%);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: #8B41F2;
+    font-weight: 600;
+}
+
+/* Próxima avaliação */
+.proxima-avaliacao {
+    background: linear-gradient(135deg, rgba(138, 184, 168, 0.1) 0%, rgba(107, 153, 151, 0.1) 100%);
+    border-left: 5px solid #8B41F2;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.proxima-avaliacao p {
+    color: #1F5AA6;
+    font-size: 0.95rem;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.proxima-avaliacao p:last-child {
+    margin-bottom: 0;
+}
+
+.proxima-avaliacao strong {
+    color: #1F5AA6;
+    font-weight: 700;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .feedback-content {
+        padding: 25px 15px;
+    }
+
+    .feedback-header {
+        flex-wrap: wrap;
+    }
+
+    .feedback-meta {
+        min-width: 200px;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+
+    .feedback-card {
+        padding: 20px;
+    }
+
+    .objetivo-item h5,
+    .feedback-meta h5 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedback-content {
+        padding: 15px 10px;
+    }
+
+    .feedback-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .feedback-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .feedback-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .feedback-rating {
+        width: 100%;
+    }
+
+    .chart-container {
+        height: 200px;
+    }
+
+    .objetivo-item {
+        padding: 15px 0;
+    }
+
+    .objetivo-item h5 {
+        font-size: 1rem;
+    }
+
+    .feedback-body p,
+    .objetivo-item p,
+    .proxima-avaliacao p {
+        font-size: 0.9rem;
+    }
+}

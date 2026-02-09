@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/logs-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('logs')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Logs de Atividades</h2>
+                <p>Acompanhe seu progresso e registre suas atividades de integração</p>
+            </header>
+
+            <main class="main-content logs-content">
+                <!-- Lista de logs -->
+                <section class="logs-section">
+                    <div class="log-item">
+                        <div class="log-icon">📄</div>
+                        <div class="log-details">
+                            <h3>Leitura do manual de boas-vindas</h3>
+                            <p class="log-description">Revisar o documento de apresentação da empresa</p>
+                            <p class="log-date">2 de fevereiro</p>
+                            <span class="log-status status-concluido">✓ Concluído</span>
+                        </div>
+                        <div class="log-actions">
+                            <button class="btn-small">Ver Detalhes</button>
+                        </div>
+                    </div>
+
+                    <div class="log-item">
+                        <div class="log-icon">📚</div>
+                        <div class="log-details">
+                            <h3>Treinamento de segurança</h3>
+                            <p class="log-description">Curso obrigatório sobre normas de segurança</p>
+                            <p class="log-date">4 de fevereiro</p>
+                            <span class="log-status status-andamento">⟳ Em andamento</span>
+                            <p class="log-progress">Progresso: 60% (clique para continuar)</p>
+                        </div>
+                        <div class="log-actions">
+                            <button class="btn-small">Continuar</button>
+                        </div>
+                    </div>
+
+                    <div class="log-item">
+                        <div class="log-icon">👥</div>
+                        <div class="log-details">
+                            <h3>Reunião com a equipe</h3>
+                            <p class="log-description">Apresentação para os colegas do departamento</p>
+                            <p class="log-date">6 de fevereiro</p>
+                            <span class="log-status status-pendente">⏱ Pendente</span>
+                        </div>
+                        <div class="log-actions">
+                            <button class="btn-small">Agendar</button>
+                        </div>
+                    </div>
+
+                    <div class="log-item">
+                        <div class="log-icon">💻</div>
+                        <div class="log-details">
+                            <h3>Configuração de ferramentas de desenvolvimento</h3>
+                            <p class="log-description">Instalar e configurar IDEs e dependências</p>
+                            <p class="log-date">Iniciado em 3 de fevereiro</p>
+                            <span class="log-status status-concluido">✓ Concluído</span>
+                        </div>
+                        <div class="log-actions">
+                            <button class="btn-small">Ver Certificado</button>
+                        </div>
+                    </div>
+
+                    <div class="log-item">
+                        <div class="log-icon">📋</div>
+                        <div class="log-details">
+                            <h3>Assinatura de documentos</h3>
+                            <p class="log-description">Assinar contrato e políticas da empresa</p>
+                            <p class="log-date">1 de fevereiro</p>
+                            <span class="log-status status-concluido">✓ Concluído</span>
+                        </div>
+                        <div class="log-actions">
+                            <button class="btn-small">Download</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+    
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

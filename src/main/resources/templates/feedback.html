@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/feedback-style.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('feedback')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Feedback</h2>
+                <p>Sobre o trabalho do colaborador</p>
+            </header>
+
+            <main class="main-content feedback-content">
+                <!-- Seção de overview -->
+                <section class="feedback-intro">
+                    <h3>Seu Desempenho Geral</h3>
+                    <p>Aqui você encontrará informações sobre seu progresso, avaliações de desempenho e feedbacks recebidos.</p>
+                </section>
+
+                <!-- Gráfico de desempenho -->
+                <section class="desempenho-section">
+                    <div class="chart-container">
+                        <h4>📊 Evolução de Desempenho por Área</h4>
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Feedbacks recebidos -->
+                <section class="feedbacks-section">
+                    <h4>💬 Feedbacks Recebidos</h4>
+                    
+                    <!-- Card de feedback -->
+                    <div class="feedback-card">
+                        <div class="feedback-header">
+                            <div class="feedback-avatar">JP</div>
+                            <div class="feedback-meta">
+                                <h5>João Paulo - Seu Gestor</h5>
+                                <p class="feedback-date">5 de fevereiro, 2026</p>
+                            </div>
+                            <span class="feedback-rating">⭐⭐⭐⭐ (4/5)</span>
+                        </div>
+                        <div class="feedback-body">
+                            <p><strong>Áreas Positivas:</strong> Excelente qualidade de código, ótima comunicação com o time, aprende rápido.</p>
+                            <p><strong>Áreas de Melhoria:</strong> Trabalhe na documentação de projetos. Procure ser mais proativo em sugerir ideias.</p>
+                            <p><strong>Próximos Passos:</strong> Vamos agendar uma 1-on-1 para discutir plano de desenvolvimento.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card de feedback -->
+                    <div class="feedback-card">
+                        <div class="feedback-header">
+                            <div class="feedback-avatar">MR</div>
+                            <div class="feedback-meta">
+                                <h5>Maria RH - Recursos Humanos</h5>
+                                <p class="feedback-date">3 de fevereiro, 2026</p>
+                            </div>
+                            <span class="feedback-rating">⭐⭐⭐⭐⭐ (5/5)</span>
+                        </div>
+                        <div class="feedback-body">
+                            <p><strong>Áreas Positivas:</strong> Integração excelente com o time, muito atencioso, sempre prestativo.</p>
+                            <p><strong>Áreas de Melhoria:</strong> Nenhuma crítica no momento. Siga com o bom trabalho!</p>
+                            <p><strong>Bônus:</strong> Seu desempenho no onboarding foi notável. A equipe gostou de trabalhar com você.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card de feedback -->
+                    <div class="feedback-card">
+                        <div class="feedback-header">
+                            <div class="feedback-avatar">CS</div>
+                            <div class="feedback-meta">
+                                <h5>Carlos Silva - Líder Técnico</h5>
+                                <p class="feedback-date">4 de fevereiro, 2026</p>
+                            </div>
+                            <span class="feedback-rating">⭐⭐⭐⭐ (4/5)</span>
+                        </div>
+                        <div class="feedback-body">
+                            <p><strong>Áreas Positivas:</strong> Forte capacidade técnica, resolve problemas com criatividade, ótima iniciativa.</p>
+                            <p><strong>Áreas de Melhoria:</strong> Verifique melhor antes de fazer commits. Às vezes há pequenos bugs que poderiam ser evitados.</p>
+                            <p><strong>Mentoria:</strong> Vou te acompanhar nos primeiros projetos. Aprenderemos juntos!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Objetivos -->
+                <section class="objetivos-section">
+                    <h4>🎯 Meus Objetivos de Desenvolvimento</h4>
+                    <div class="objetivo-item">
+                        <h5>Objetivo 1: Melhorar Documentação de Código</h5>
+                        <p>Meta: Documentar 100% das funções públicas em projetos principais</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%;"></div>
+                        </div>
+                        <span class="progress-text">45% concluído</span>
+                    </div>
+                    <div class="objetivo-item">
+                        <h5>Objetivo 2: Aprender Novo Framework</h5>
+                        <p>Meta: Completar curso de React avançado e criar 2 projetos exemplo</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <span class="progress-text">60% concluído</span>
+                    </div>
+                    <div class="objetivo-item">
+                        <h5>Objetivo 3: Liderança Técnica</h5>
+                        <p>Meta: Liderar uma reunião técnica mensal e compartilhar conhecimento</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%;"></div>
+                        </div>
+                        <span class="progress-text">20% concluído</span>
+                    </div>
+                </section>
+
+                <!-- Próxima avaliação -->
+                <section class="proxima-avaliacao">
+                    <p>📅 <strong>Próxima avaliação formal:</strong> 15 de março de 2026</p>
+                    <p>💡 <strong>Dica:</strong> Agende 1-on-1s regularmente com seu gestor para feedback contínuo!</p>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/feedback-chart.js}"></script>
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/politicas-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('politicas')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Políticas da Empresa</h2>
+                <p>Normas, benefícios e cultura da empresa GameOnTech</p>
+            </header>
+
+            <main class="main-content politicas-content">
+                <!-- Política 1 -->
+                <section class="politica-section">
+                    <div class="section-header">
+                        <h3>🤝 Políticas de Convivência</h3>
+                    </div>
+                    <div class="section-content">
+                        <p class="section-intro">Acreditamos em um ambiente de trabalho inclusivo, respeitoso e seguro para todos.</p>
+                        <ul class="policy-list">
+                            <li>
+                                <strong>Respeito à Diversidade:</strong>
+                                Todos os colaboradores têm direito ao respeito e dignidade, independente de origem, gênero, idade, orientação sexual ou credo religioso.
+                            </li>
+                            <li>
+                                <strong>Política Contra Discriminação:</strong>
+                                A GameOnTech não tolera qualquer forma de discriminação, preconceito ou assédio. Violações será investigadas rigorosamente.
+                            </li>
+                            <li>
+                                <strong>Igualdade de Gênero:</strong>
+                                Comprometemo-nos com a igualdade de oportunidades entre homens e mulheres em todas as áreas da empresa.
+                            </li>
+                            <li>
+                                <strong>Combate ao Racismo:</strong>
+                                Rejeitamos qualquer forma de racismo, preconceito racial ou discriminação étnica. Denúncias são anônimas e confidenciais.
+                            </li>
+                            <li>
+                                <strong>Combate à Homofobia:</strong>
+                                Pessoas LGBTQIA+ são absolutamente bem-vindas e protegidas em nosso ambiente corporativo. Qualquer forma de preconceito é intolerável.
+                            </li>
+                            <li>
+                                <strong>Combate ao Machismo:</strong>
+                                Não toleramos comportamentos ou linguagem sexista. Igualdade de direitos e oportunidades para todas as pessoas.
+                            </li>
+                            <li>
+                                <strong>Comunicação Respeitosa:</strong>
+                                Todos devem se comunicar com respeito, mesmo em desacordos. Xingamentos, ofensas pessoais são proibidos.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Política 2 -->
+                <section class="politica-section">
+                    <div class="section-header">
+                        <h3>💼 Políticas de Trabalho</h3>
+                    </div>
+                    <div class="section-content">
+                        <p class="section-intro">Expectativas e normas para o ambiente profissional.</p>
+                        <ul class="policy-list">
+                            <li>
+                                <strong>Jornada de Trabalho:</strong>
+                                Horário padrão: 08:30 às 17:30, com 1 hora de almoço (12:00-13:00). Flexibilidade pode ser negociada com gestor.
+                            </li>
+                            <li>
+                                <strong>Assiduidade e Pontualidade:</strong>
+                                A pontualidade é essencial. Faltas injustificadas resultam em descontos salariais. Máximo 3 faltas ao mês.
+                            </li>
+                            <li>
+                                <strong>Confidencialidade:</strong>
+                                Informações da empresa, projetos e dados de clientes são confidenciais. Divulgação não autorizada resulta em ações legais.
+                            </li>
+                            <li>
+                                <strong>Código de Ética:</strong>
+                                Todos devem atuar com integridade, honestidade e transparência nas atividades corporativas.
+                            </li>
+                            <li>
+                                <strong>Uso de Recursos da Empresa:</strong>
+                                Computadores, telefones e internet são para uso profissional. Uso pessoal moderado é permitido.
+                            </li>
+                            <li>
+                                <strong>Dress Code:</strong>
+                                Business casual é o padrão. Sexta-feira casual é permitida. Traje adequado ao contexto de reuniões com clientes.
+                            </li>
+                            <li>
+                                <strong>Qualidade do Trabalho:</strong>
+                                Esperamos excelência nas entregas, cumprimento de prazos e responsabilidade com projetos.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Política 3 -->
+                <section class="politica-section">
+                    <div class="section-header">
+                        <h3>🎁 Benefícios e Vantagens</h3>
+                    </div>
+                    <div class="section-content">
+                        <p class="section-intro">Benefícios oferecidos para nossos colaboradores.</p>
+                        <ul class="policy-list">
+                            <li>
+                                <strong>Plano de Saúde:</strong>
+                                Cobertura completa (titular + dependentes). Empresa paga 100% da mensalidade.
+                            </li>
+                            <li>
+                                <strong>Plano Odontológico:</strong>
+                                Cobertura para limpeza, restaurações e aparelhos. Empresa financia 80%.
+                            </li>
+                            <li>
+                                <strong>Vale-Refeição:</strong>
+                                Auxílio de R$ 500/mês para alimentação (restaurante/mercado).
+                            </li>
+                            <li>
+                                <strong>Vale-Transporte:</strong>
+                                100% do valor de deslocamento cobrado pela empresa.
+                            </li>
+                            <li>
+                                <strong>Programa de Desenvolvimento:</strong>
+                                Cursos, certificações e treinamentos custeados pela empresa (até R$ 3.000/ano).
+                            </li>
+                            <li>
+                                <strong>Ambiente Flexível:</strong>
+                                Trabalho remoto até 2 dias por semana, mediante acordo com gestor.
+                            </li>
+                            <li>
+                                <strong>Sala fitness:</strong>
+                                Academia interna gratuita para colaboradores e dependentes.
+                            </li>
+                            <li>
+                                <strong>Seguro de Vida:</strong>
+                                Cobertura integral para você e dependentes.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Política 4 -->
+                <section class="politica-section">
+                    <div class="section-header">
+                        <h3>🔒 Políticas de Segurança da Informação</h3>
+                    </div>
+                    <div class="section-content">
+                        <p class="section-intro">Proteção de dados e informações confidenciais.</p>
+                        <ul class="policy-list">
+                            <li>
+                                <strong>Senhas:</strong>
+                                Deve ter mínimo 12 caracteres, atualizada a cada 90 dias. Nunca compartilhe sua senha.
+                            </li>
+                            <li>
+                                <strong>Bloqueio de Tela:</strong>
+                                Sempre bloqueie seu computador ao sair da mesa (Win+L).
+                            </li>
+                            <li>
+                                <strong>Dados de Clientes:</strong>
+                                Nunca divulgue informações de clientes, mesmo para outros funcionários não autorizados.
+                            </li>
+                            <li>
+                                <strong>Redes WiFi:</strong>
+                                Use apenas a rede corporativa. Redes públicas são inseguras para trabalho confidencial.
+                            </li>
+                            <li>
+                                <strong>Antivírus:</strong>
+                                Todos os dispositivos devem ter antivírus atualizado. Não abra anexos suspeitos.
+                            </li>
+                            <li>
+                                <strong>Backup de Dados:</strong>
+                                Dados críticos devem ser salvos na nuvem corporativa, não em dispositivos pessoais.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Política 5 -->
+                <section class="politica-section">
+                    <div class="section-header">
+                        <h3>⚠️ Saúde e Segurança</h3>
+                    </div>
+                    <div class="section-content">
+                        <p class="section-intro">Bem-estar físico e mental de todos os colaboradores.</p>
+                        <ul class="policy-list">
+                            <li>
+                                <strong>Saúde Ocupacional:</strong>
+                                Exame admissional, periódico e demissional oferecidos gratuitamente.
+                            </li>
+                            <li>
+                                <strong>Ergonomia:</strong>
+                                Análise de postura de trabalho. Ajustes na mesa e cadeira conforme necessário.
+                            </li>
+                            <li>
+                                <strong>Saúde Mental:</strong>
+                                Acesso gratuito a psicólogo corporativo. Consultas totalmente confidenciais.
+                            </li>
+                            <li>
+                                <strong>Prevenção de Acidentes:</strong>
+                                Treinamento obrigatório. EPIs fornecidos quando necessário.
+                            </li>
+                            <li>
+                                <strong>Proibição de Assédio Moral:</strong>
+                                Comportamento abusivo, humilhante ou coercitivo é passível de demissão incluindo justa causa.
+                            </li>
+                            <li>
+                                <strong>Licença Saúde:</strong>
+                                Abonado os primeiros 15 dias. Acima disso, INSS cobre até 120 dias.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Aviso final -->
+                <section class="aviso-section">
+                    <p>Estas políticas visam criar um ambiente ético, respeitoso e produtivo. Violações sérias podem resultar em demissão imediata. Para dúvidas, contate a área de RH.</p>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+    
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

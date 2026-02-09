@@ -1,0 +1,106 @@
+/* ========================================
+   DOCUMENTACAO: CSS - Pagina Treinamento
+   ======================================== */
+
+.treinamento-content {
+    padding: 40px 30px;
+}
+
+.treinamento-intro {
+    margin-bottom: 30px;
+}
+
+.treinamento-intro h3 {
+    font-size: 1.6rem;
+    color: var(--color4);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.treinamento-intro p {
+    color: var(--text-light);
+}
+
+.treinamento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.curso-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    border-left: 5px solid var(--color2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.curso-card h4 {
+    color: var(--color4);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.curso-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.curso-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.curso-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(15, 166, 123, 0.15);
+    color: var(--color2);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.curso-badge.em-andamento {
+    background: rgba(31, 90, 166, 0.15);
+    color: var(--color4);
+}
+
+.curso-badge.pendente {
+    background: rgba(242, 121, 15, 0.15);
+    color: var(--color1);
+}
+
+.curso-badge.concluido {
+    background: rgba(139, 65, 242, 0.15);
+    color: var(--color3);
+}
+
+.curso-acao {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color3);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.curso-acao:hover {
+    color: var(--color2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .treinamento-content {
+        padding: 25px 20px;
+    }
+}

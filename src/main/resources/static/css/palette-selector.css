@@ -1,0 +1,228 @@
+/* ========================================
+   DOCUMENTAÇÃO: Seletor de Paleta CSS
+   ========================================
+   
+   Este arquivo estiliza a página de seleção de paleta de cores.
+   
+   ELEMENTOS PRINCIPAIS:
+   - .container-selector: Contenedor principal com flexbox
+   - .header-selector: Seção de cabeçalho com título e descrição
+   - .palette-options: Flex container para os cards de paleta
+   - .palette-card: Card individual com preview da paleta
+   - .palette-preview: Container dos quadrados de cor
+   - .color-box: Quadrados que mostram cada cor da paleta
+   - .btn-select: Botão para selecionar a paleta
+   - .footer-selector: Rodapé com créditos
+   
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.container-selector {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    padding: 60px 40px;
+    max-width: 1000px;
+    width: 90%;
+}
+
+/* Seção de cabeçalho */
+.header-selector {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header-selector h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.header-selector p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Container das opções de paleta */
+.palette-options {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+/* Card de paleta individual */
+.palette-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.palette-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: #333;
+}
+
+/* Paleta 1 - Natural */
+.palette-1 {
+    background: #f9f9f9;
+}
+
+.palette-1 .color-1 { background-color: #F2790F; }
+.palette-1 .color-2 { background-color: #0FA67B; }
+.palette-1 .color-3 { background-color: #8B41F2; }
+.palette-1 .color-4 { background-color: #1F5AA6; }
+.palette-1 .color-5 { background-color: #763DF2; }
+
+/* Paleta 2 - Profissional */
+.palette-2 {
+    background: #f9f9f9;
+}
+
+.palette-2 .color-1 { background-color: #D9306E; }
+.palette-2 .color-2 { background-color: #168CC5; }
+.palette-2 .color-3 { background-color: #BF6E3F; }
+.palette-2 .color-4 { background-color: #F2790F; }
+.palette-2 .color-5 { background-color: #0FA67B; }
+
+/* Preview das cores */
+.palette-preview {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+/* Quadrado individual de cor */
+.color-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.color-box:hover {
+    transform: scale(1.1);
+}
+
+/* Títulos e descrição dos cards */
+.palette-card h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.palette-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* Botão de seleção */
+.btn-select {
+    display: inline-block;
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+    color: white;
+    padding: 12px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.btn-select:active {
+    transform: scale(0.98);
+}
+
+/* Rodapé */
+.footer-selector {
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .container-selector {
+        padding: 40px 25px;
+    }
+
+    .header-selector h1 {
+        font-size: 2rem;
+    }
+
+    .palette-options {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .palette-card {
+        min-width: unset;
+        max-width: unset;
+    }
+}
+
+/* Responsividade para telefones */
+@media (max-width: 480px) {
+    .container-selector {
+        padding: 30px 15px;
+    }
+
+    .header-selector h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-selector p {
+        font-size: 1rem;
+    }
+
+    .palette-preview {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .color-box {
+        width: 100%;
+        height: 40px;
+    }
+
+    .btn-select {
+        width: 100%;
+    }
+}

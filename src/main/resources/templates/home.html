@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/palette.css}">
+    <link rel="stylesheet" th:href="@{/css/home-style.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('home')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <div class="header-icon">✨</div>
+                <h2>Bem-vindo ao seu onboarding</h2>
+                <p>Estamos felizes em ter você conosco. Vamos começar sua jornada?</p>
+            </header>
+
+            <main class="main-content">
+                <!-- Seção de boas-vindas -->
+                <section class="welcome-section">
+                    <h1>Olá, Bem vindo leo.buso! 👋</h1>
+                    <p>Estamos felizes em ter você conosco. Vamos começar sua jornada?</p>
+                </section>
+
+                <!-- Seção de progresso -->
+                <section class="progress-section">
+                    <div class="progress-container">
+                        <div class="progress-circle">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                        <div class="progress-info">
+                            <h3>Seu Progresso de Onboarding</h3>
+                            <p>Ótimo progresso! Continue assim.</p>
+                            <p class="pending-tasks">⏱ 2 tarefas pendentes</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção de exploração -->
+                <section class="explore-section">
+                    <h2>Explore seu onboarding</h2>
+
+                    <div class="explore-grid">
+                        <!-- Card Logs -->
+                        <div class="explore-card">
+                            <div class="card-icon">📊</div>
+                            <div class="card-number">3</div>
+                            <h4>Logs</h4>
+                            <p>Acompanhe seu progresso e atividades de integração</p>
+                            <a th:href="@{/logs}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Trabalhos -->
+                        <div class="explore-card">
+                            <div class="card-icon">💼</div>
+                            <div class="card-number">2</div>
+                            <h4>Novos Trabalhos</h4>
+                            <p>Veja suas tarefas e projetos atribuídos</p>
+                            <a th:href="@{/trabalhos}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Cronograma -->
+                        <div class="explore-card">
+                            <div class="card-icon">📅</div>
+                            <div class="card-number">3</div>
+                            <h4>Cronograma</h4>
+                            <p>Eventos, treinamentos e reuniões agendadas</p>
+                            <a th:href="@{/cronograma}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Treinamento -->
+                        <div class="explore-card">
+                            <div class="card-icon">🎓</div>
+                            <div class="card-number">4</div>
+                            <h4>Treinamento</h4>
+                            <p>Cursos essenciais para o seu início na empresa</p>
+                            <a th:href="@{/treinamento}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Políticas -->
+                        <div class="explore-card">
+                            <div class="card-icon">📋</div>
+                            <h4>Políticas</h4>
+                            <p>Normas, benefícios e cultura da empresa</p>
+                            <a th:href="@{/politicas}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Feedback -->
+                        <div class="explore-card">
+                            <div class="card-icon">💬</div>
+                            <h4>Feedback</h4>
+                            <p>Tire dúvidas sobre evolução e desempenho</p>
+                            <a th:href="@{/feedback}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Assistente Virtual -->
+                        <div class="explore-card">
+                            <div class="card-icon">🤖</div>
+                            <h4>Assistente Virtual</h4>
+                            <p>Tire dúvidas rápidas sobre processos e onboarding</p>
+                            <a th:href="@{/chat}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Conversa com Gerente -->
+                        <div class="explore-card">
+                            <div class="card-icon">👔</div>
+                            <h4>Conversa com Gerente</h4>
+                            <p>Simulador de conversas com seu gestor direto</p>
+                            <a th:href="@{/conversa-gerente}" class="card-btn">Acessar ></a>
+                        </div>
+
+                        <!-- Card Tarefas -->
+                        <div class="explore-card">
+                            <div class="card-icon">✅</div>
+                            <h4>Tarefas</h4>
+                            <p>Acompanhe e complete suas tarefas de onboarding</p>
+                            <a th:href="@{/tarefas}" class="card-btn">Acessar ></a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script th:src="@{/js/progress-chart.js}"></script>
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

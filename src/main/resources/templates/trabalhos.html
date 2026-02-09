@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhos - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/trabalhos-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('trabalhos')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Novos Trabalhos</h2>
+                <p>Suas tarefas e projetos atribuídos</p>
+            </header>
+
+            <main class="main-content trabalhos-content">
+                <!-- Filtros/Abas -->
+                <div class="trabalhos-tabs">
+                    <button class="tab-btn active" data-filter="todos">Todos</button>
+                    <button class="tab-btn" data-filter="pendentes">Pendentes</button>
+                    <button class="tab-btn" data-filter="andamento">Em Andamento</button>
+                    <button class="tab-btn" data-filter="concluidos">Concluídos</button>
+                </div>
+
+                <!-- Lista de trabalhos -->
+                <section class="trabalhos-section">
+                    <!-- Trabalho 1 -->
+                    <div class="trabalho-item status-concluido">
+                        <div class="trabalho-header">
+                            <div class="trabalho-checkbox">✓</div>
+                            <div>
+                                <h3>Configurar e-mail corporativo</h3>
+                                <p class="trabalho-data">Iniciado em: 3 de fevereiro | Concluído em: 3 de fevereiro</p>
+                            </div>
+                            <span class="trabalho-badge concluido">Concluído</span>
+                        </div>
+                        <div class="trabalho-body">
+                            <p>Acessar o portal de TI e configurar sua conta de e-mail corporativo com as credenciais fornecidas.</p>
+                            <div class="trabalho-meta">
+                                <span class="meta-item">👤 Responsável: João Silva</span>
+                                <span class="meta-item">⏱ Prazo: 3 dias</span>
+                                <span class="meta-item">🎯 Prioridade: Alta</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trabalho 2 -->
+                    <div class="trabalho-item status-andamento">
+                        <div class="trabalho-header">
+                            <div class="trabalho-checkbox">⚡</div>
+                            <div>
+                                <h3>Preencher cadastro de benefícios</h3>
+                                <p class="trabalho-data">Iniciado em: 9 de fevereiro</p>
+                            </div>
+                            <span class="trabalho-badge andamento">Em Andamento</span>
+                        </div>
+                        <div class="trabalho-body">
+                            <p>Acessar o sistema de RH e completar o formulário de benefícios. Informações necessárias estarão no e-mail.</p>
+                            <div class="trabalho-meta">
+                                <span class="meta-item">👤 Responsável: Maria RH</span>
+                                <span class="meta-item">⏱ Prazo: 7 dias</span>
+                                <span class="meta-item">🎯 Prioridade: Média</span>
+                            </div>
+                            <div class="trabalho-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                                <span class="progress-text">65% concluído</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trabalho 3 -->
+                    <div class="trabalho-item status-pendente">
+                        <div class="trabalho-header">
+                            <div class="trabalho-checkbox">○</div>
+                            <div>
+                                <h3>Assistir vídeos de cultura</h3>
+                                <p class="trabalho-data">Prazo: 14 de fevereiro</p>
+                            </div>
+                            <span class="trabalho-badge pendente">Pendente</span>
+                        </div>
+                        <div class="trabalho-body">
+                            <p>Completar os 3 vídeos sobre a cultura da empresa. Estão disponíveis na plataforma de treinamento.</p>
+                            <div class="trabalho-meta">
+                                <span class="meta-item">👤 Responsável: Setor de Cultura</span>
+                                <span class="meta-item">⏱ Prazo: 14 dias</span>
+                                <span class="meta-item">🎯 Prioridade: Baixa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trabalho 4 -->
+                    <div class="trabalho-item status-pendente">
+                        <div class="trabalho-header">
+                            <div class="trabalho-checkbox">○</div>
+                            <div>
+                                <h3>Rodada de apresentações com o time</h3>
+                                <p class="trabalho-data">Agendar para: próxima semana</p>
+                            </div>
+                            <span class="trabalho-badge pendente">Pendente</span>
+                        </div>
+                        <div class="trabalho-body">
+                            <p>Agendar uma reunião com seu time direto para apresentar-se e conhecer melhor cada membro. Duração: ~1 hora.</p>
+                            <div class="trabalho-meta">
+                                <span class="meta-item">👤 Responsável: Seu Gestor</span>
+                                <span class="meta-item">⏱ Prazo: 7 dias</span>
+                                <span class="meta-item">🎯 Prioridade: Alta</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/trabalhos-filter.js}"></script>
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

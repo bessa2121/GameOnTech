@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/cronograma-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('cronograma')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Cronograma</h2>
+                <p>Eventos, treinamentos e reuniões agendadas para seu onboarding</p>
+            </header>
+
+            <main class="main-content cronograma-content">
+                <!-- Título da seção -->
+                <section class="cronograma-intro">
+                    <h2>Amanhã</h2>
+                    <p>Próximas atividades agendadas</p>
+                </section>
+
+                <!-- Tabela de cronograma -->
+                <section class="cronograma-table-section">
+                    <table class="cronograma-table" border="1">
+                        <colgroup>
+                            <col style="width: 12%;">
+                            <col style="width: 15%;">
+                            <col style="width: 35%;">
+                            <col style="width: 20%;">
+                            <col style="width: 18%;">
+                        </colgroup>
+                        <thead>
+                            <tr class="table-header">
+                                <th colspan="1">Horário</th>
+                                <th colspan="1">Dia da Semana</th>
+                                <th colspan="1">Evento / Atividade</th>
+                                <th colspan="1">Local / Plataforma</th>
+                                <th colspan="1">Responsável</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Segunda-feira -->
+                            <tr class="day-separator">
+                                <td colspan="5" class="day-label">
+                                    <strong>Segunda-Feira, 10 de Fevereiro</strong>
+                                </td>
+                            </tr>
+                            <tr class="event-row">
+                                <td class="time-cell">09:00</td>
+                                <td class="day-cell">Seg</td>
+                                <td class="event-cell">
+                                    <span class="event-icon">☕</span>
+                                    Café de boas-vindas
+                                </td>
+                                <td class="location-cell">Sala de Reuniões - 3º andar</td>
+                                <td class="responsible-cell">Setor RH</td>
+                            </tr>
+                            <tr class="event-row">
+                                <td class="time-cell">12:00</td>
+                                <td class="day-cell">Seg</td>
+                                <td class="event-cell">
+                                    <span class="event-icon">🍽️</span>
+                                    Almoço com o time
+                                </td>
+                                <td class="location-cell">Restaurante Corporativo</td>
+                                <td class="responsible-cell">Seu Gestor</td>
+                            </tr>
+                            <tr class="event-row">
+                                <td class="time-cell">14:00</td>
+                                <td class="day-cell">Seg</td>
+                                <td class="event-cell">
+                                    <span class="event-icon">📚</span>
+                                    Treinamento de sistemas
+                                </td>
+                                <td class="location-cell">Auditório</td>
+                                <td class="responsible-cell">TI</td>
+                            </tr>
+
+                            <!-- Terça-feira -->
+                            <tr class="day-separator">
+                                <td colspan="5" class="day-label">
+                                    <strong>Terça-Feira, 12 de Fevereiro</strong>
+                                </td>
+                            </tr>
+                            <tr class="event-row">
+                                <td class="time-cell">10:00</td>
+                                <td class="day-cell">Ter</td>
+                                <td class="event-cell">
+                                    <span class="event-icon">👥</span>
+                                    Apresentação do projeto atual
+                                </td>
+                                <td class="location-cell">Sala de Reuniões - 2º andar</td>
+                                <td class="responsible-cell">Gestor de Projeto</td>
+                            </tr>
+                            <tr class="event-row">
+                                <td class="time-cell">15:30</td>
+                                <td class="day-cell">Ter</td>
+                                <td class="event-cell">
+                                    <span class="event-icon">💼</span>
+                                    1-on-1 com seu gestor
+                                </td>
+                                <td class="location-cell">Escritório - Seu Gestor</td>
+                                <td class="responsible-cell">Seu Gestor</td>
+                            </tr>
+
+                            <!-- Quinta-feira -->
+                            <tr class="day-separator">
+                                <td colspan="5" class="day-label">
+                                    <strong>Quinta-Feira, 14 de Fevereiro</strong>
+                                </td>
+                            </tr>
+                            <tr class="event-row highlight">
+                                <td class="time-cell">09:00</td>
+                                <td class="day-cell">Qui</td>
+                                <td class="event-cell">
+                                    <span class="event-icon">🎯</span>
+                                    Reunião de alinhamento - Sprint
+                                </td>
+                                <td class="location-cell">Zoom / Sala 1</td>
+                                <td class="responsible-cell">Líder Técnico</td>
+                            </tr>
+                            <tr class="event-row">
+                                <td class="time-cell">11:00</td>
+                                <td class="day-cell">Qui</td>
+                                <td class="event-cell">
+                                    <span class="event-icon">🎓</span>
+                                    Workshop de boas-vindas
+                                </td>
+                                <td class="location-cell">Online - Plataforma Interna</td>
+                                <td class="responsible-cell">Setor Cultura</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Horários importantes -->
+                <section class="horarios-importantes">
+                    <h3>⏰ Horários Importantes da Empresa</h3>
+                    <table class="horarios-table" border="1">
+                        <colgroup>
+                            <col style="width: 40%;">
+                            <col style="width: 60%;">
+                        </colgroup>
+                        <thead>
+                            <tr class="table-header">
+                                <th colspan="1">Atividade</th>
+                                <th colspan="1">Horário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Início do Expediente</td>
+                                <td><strong>08:30</strong></td>
+                            </tr>
+                            <tr class="highlight-row">
+                                <td>Almoço (obrigatório)</td>
+                                <td><strong>12:00 - 13:00</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Café Corporativo</td>
+                                <td><strong>10:00 e 15:00</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Final do Expediente</td>
+                                <td><strong>17:30</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Reunião Semanal (todas segundas)</td>
+                                <td><strong>09:00 - 10:00</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+    
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

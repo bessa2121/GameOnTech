@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seletor de Paleta - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/palette-selector.css}">
+</head>
+<body>
+    <div class="container-selector">
+        <div class="header-selector">
+            <h1>Bem-vindo ao GameOnTech</h1>
+            <p>Escolha a paleta de cores que você prefere para sua jornada de onboarding</p>
+        </div>
+
+        <div class="palette-options">
+            <!-- Palette 1 -->
+            <div class="palette-card palette-1">
+                <div class="palette-preview">
+                    <div class="color-box color-1"></div>
+                    <div class="color-box color-2"></div>
+                    <div class="color-box color-3"></div>
+                    <div class="color-box color-4"></div>
+                    <div class="color-box color-5"></div>
+                </div>
+                <h2>Paleta Natural</h2>
+                <p>Uma combinação quente e natural com tons verdes e marrom</p>
+                <a th:href="@{/home}" class="btn-select">Selecionar Paleta 1</a>
+            </div>
+
+            <!-- Palette 2 -->
+            <div class="palette-card palette-2">
+                <div class="palette-preview">
+                    <div class="color-box color-1"></div>
+                    <div class="color-box color-2"></div>
+                    <div class="color-box color-3"></div>
+                    <div class="color-box color-4"></div>
+                    <div class="color-box color-5"></div>
+                </div>
+                <h2>Paleta Profissional</h2>
+                <p>Uma combinação elegante e sofisticada com tons cinza</p>
+                <a th:href="@{/home}" class="btn-select">Selecionar Paleta 2</a>
+            </div>
+        </div>
+
+        <footer class="footer-selector">
+            <p>&copy; 2026 GameOnTech | Desenvolvido por João Vitor, Davi Tavares e Felipe Buso</p>
+        </footer>
+    </div>
+</body>
+</html>

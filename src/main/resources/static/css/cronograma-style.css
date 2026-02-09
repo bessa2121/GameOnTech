@@ -1,0 +1,336 @@
+/* ========================================
+   DOCUMENTAÇÃO: CSS - Página Cronograma
+   ========================================
+   
+   ELEMENTOS PRINCIPAIS:
+   - .cronograma-content: Container principal
+   - .cronograma-intro: Seção introdutória
+   - .cronograma-table-section: Container da tabela principale
+   - .cronograma-table: Tabela principal com <table>, <tr>, <th>, <td>
+   - .horarios-importantes: Seção com horários importantes
+   - .horarios-table: Tabela secundária com horários
+   
+   ELEMENTOS HTML USADOS:
+   <table>: Tabelas de dados
+   <thead>: Cabeçalho da tabela
+   <tbody>: Corpo da tabela
+   <tr>: Linhas da tabela
+   <th>: Células de cabeçalho (negritado)
+   <td>: Células de dados
+   <colgroup>: Grupo de colunas
+   <col>: Define largura de coluna (width: %)
+   
+   ATRIBUTOS USADOS:
+   border="1": Bordas visíveis nas tabelas
+   colspan="1": Coluna simples (ou colspan="5" para linha inteira)
+   rowspan: Pode ser usado para agrupar linhas (não usado neste exemplo)
+   
+   CLASSES DE ESTILO:
+   .table-header: Cabeçalho com cor color2
+   .day-separator: Separador de dia (background color1)
+   .day-label: Rótulo do dia com colspan="5"
+   .event-row: Linha de evento
+   .highlight: Destaque especial para eventos importantes
+   .time-cell: Célula de horário
+   .day-cell: Célula de abreviação do dia
+   .event-cell: Célula de evento com ícone emoji
+   .location-cell: Célula de local
+   .responsible-cell: célula de responsável
+   .event-icon: Ícone emoji do evento
+   .highlight-row: Destaque para linha importante
+   
+   ======================================== */
+
+.cronograma-content {
+    padding: 40px 30px;
+}
+
+/* Seção introdutória */
+.cronograma-intro {
+    margin-bottom: 40px;
+}
+
+.cronograma-intro h2 {
+    font-size: 1.8rem;
+    color: #1F5AA6;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.cronograma-intro p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* Seção da tabela principal */
+.cronograma-table-section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+/* Estilos da tabela principal */
+.cronograma-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+/* <colgroup> - Grupos de colunas para layout */
+.cronograma-table colgroup {
+    display: table-column-group;
+}
+
+.cronograma-table col {
+    display: table-column;
+}
+
+/* Cabeçalho da tabela */
+.cronograma-table .table-header {
+    background: linear-gradient(135deg, #0FA67B 0%, #8B41F2 100%);
+    color: white;
+}
+
+.cronograma-table .table-header th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 2px solid #1F5AA6;
+}
+
+/* Separador de dia */
+.cronograma-table .day-separator {
+    background-color: rgba(135, 147, 146, 0.3);
+    font-weight: bold;
+}
+
+.cronograma-table .day-label {
+    padding: 15px;
+    color: #1F5AA6;
+    font-size: 1rem;
+    
+}
+
+/* Linhas de evento */
+.cronograma-table .event-row {
+    border: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+.cronograma-table .event-row:hover {
+    background-color: rgba(107, 153, 151, 0.08);
+}
+
+.cronograma-table .event-row.highlight {
+    background-color: rgba(138, 184, 168, 0.15);
+    border-left: 5px solid #0FA67B;
+}
+
+/* Células da tabela */
+.cronograma-table td {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+/* Célula de horário */
+.cronograma-table .time-cell {
+    font-weight: 700;
+    color: #8B41F2;
+    width: 80px;
+    text-align: center;
+    background-color: rgba(135, 147, 146, 0.1);
+}
+
+/* Célula de dia */
+.cronograma-table .day-cell {
+    text-align: center;
+    color: #7f8c8d;
+    background-color: rgba(135, 147, 146, 0.05);
+}
+
+/* Célula de evento */
+.cronograma-table .event-cell {
+    font-weight: 500;
+    color: #1F5AA6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.event-icon {
+    font-size: 1.3rem;
+    min-width: 25px;
+}
+
+/* Célula de local */
+.cronograma-table .location-cell {
+    color: #0FA67B;
+    font-size: 0.9rem;
+}
+
+/* Célula de responsável */
+.cronograma-table .responsible-cell {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Seção de horários importantes */
+.horarios-importantes {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.horarios-importantes h3 {
+    font-size: 1.3rem;
+    color: #1F5AA6;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Tabela de horários */
+.horarios-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* <colgroup> para a tabela de horários */
+.horarios-table colgroup {
+    display: table-column-group;
+}
+
+.horarios-table col {
+    display: table-column;
+}
+
+/* Cabeçalho da tabela de horários */
+.horarios-table .table-header {
+    background: linear-gradient(135deg, #0FA67B 0%, #8B41F2 100%);
+    color: white;
+}
+
+.horarios-table .table-header th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 700;
+    border: 2px solid #1F5AA6;
+}
+
+/* Linhas da tabela de horários */
+.horarios-table tbody tr {
+    border: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+.horarios-table tbody tr:hover {
+    background-color: rgba(107, 153, 151, 0.08);
+}
+
+.horarios-table tbody tr.highlight-row {
+    background-color: rgba(138, 184, 168, 0.15);
+}
+
+/* Células da tabela de horários */
+.horarios-table td {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    color: #2c3e50;
+    font-size: 0.95rem;
+}
+
+.horarios-table td:first-child {
+    font-weight: 500;
+    color: #1F5AA6;
+}
+
+.horarios-table td:last-child {
+    color: #8B41F2;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .cronograma-content {
+        padding: 25px 15px;
+    }
+
+    .cronograma-intro h2 {
+        font-size: 1.5rem;
+    }
+
+    .cronograma-table-section,
+    .horarios-importantes {
+        padding: 15px;
+    }
+
+    .cronograma-table,
+    .horarios-table {
+        font-size: 0.9rem;
+    }
+
+    .cronograma-table td,
+    .horarios-table td,
+    .cronograma-table th,
+    .horarios-table th {
+        padding: 8px 10px;
+    }
+
+    .event-icon {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsividade para telefones */
+@media (max-width: 480px) {
+    .cronograma-content {
+        padding: 15px 10px;
+    }
+
+    .cronograma-table-section,
+    .horarios-importantes {
+        padding: 10px;
+        overflow-x: auto;
+    }
+
+    .cronograma-table,
+    .horarios-table {
+        font-size: 0.8rem;
+        min-width: 600px;
+    }
+
+    .cronograma-table td,
+    .horarios-table td,
+    .cronograma-table th,
+    .horarios-table th {
+        padding: 6px 8px;
+    }
+
+    .cronograma-table .table-header th {
+        font-size: 0.8rem;
+    }
+
+    .cronograma-intro h2 {
+        font-size: 1.3rem;
+    }
+
+    .horarios-importantes h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Oculta algumas colunas em telefone para melhor visualização */
+    .day-cell {
+        display: none;
+    }
+
+    .cronograma-table {
+        font-size: 0.75rem;
+    }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversa com o Gerente - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/chat-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('conversa-gerente')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Conversa com o Gerente</h2>
+                <p>Simulador para perguntas e conversas com seu chefe</p>
+            </header>
+
+            <main class="main-content chat-content">
+                <!-- Info section -->
+                <section class="chat-info">
+                    <p>💡 <strong>Dica:</strong> Use esta conversa para praticar feedbacks e alinhamentos com seu gestor.</p>
+                </section>
+
+                <!-- Chat interface -->
+                <div class="chat-container">
+                    <!-- Header da conversa -->
+                    <div class="chat-header">
+                        <div class="chat-contact">
+                            <div class="contact-avatar">JP</div>
+                            <div class="contact-info">
+                                <h4>João Paulo</h4>
+                                <p>Seu Gestor Direto</p>
+                            </div>
+                        </div>
+                        <button class="btn-reset" onclick="resetChat()">🔄 Resetar Chat</button>
+                    </div>
+
+                    <!-- Área de mensagens -->
+                    <div class="messages-area" id="messagesArea">
+                        <div class="message-group system">
+                            <div class="message">
+                                <p>Oi! Podemos conversar. Como posso ajudar no seu desenvolvimento?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sugestões de perguntas -->
+                    <div class="quick-replies">
+                        <button class="reply-btn" onclick="sendMessage('Quais sao minhas prioridades para esta semana?')">
+                            ✅ Prioridades da semana
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Voce pode revisar meu progresso no onboarding?')">
+                            📊 Revisar progresso
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Como posso melhorar minha comunicacao com o time?')">
+                            🤝 Melhorar comunicacao
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Quando podemos marcar uma 1-on-1?')">
+                            📅 Agendar 1-on-1
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Preciso de acesso a uma ferramenta. Como seguimos?')">
+                            🔐 Pedir acesso
+                        </button>
+                        <button class="reply-btn" onclick="sendMessage('Quais sao as expectativas para os proximos 3 meses?')">
+                            🎯 Metas 3 meses
+                        </button>
+                    </div>
+
+                    <!-- Input de mensagem -->
+                    <div class="message-input-container">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            class="message-input" 
+                            placeholder="Digite sua pergunta..." 
+                            onkeypress="handleKeyPress(event)"
+                        >
+                        <button class="btn-send" onclick="sendMessage()">➤ Enviar</button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/chat-simulator.js}"></script>
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

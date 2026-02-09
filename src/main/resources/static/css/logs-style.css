@@ -1,0 +1,225 @@
+/* ========================================
+   DOCUMENTAÇÃO: CSS - Página Logs
+   ========================================
+   
+   ELEMENTOS PRINCIPAIS:
+   - .logs-content: Container principal da página de logs
+   - .logs-section: Seção que contém todos os itens de log
+   - .log-item: Item individual de log com flex layout
+   - .log-icon: Ícone emoji do log (largura: 60px)
+   - .log-details: Informações do log (flex: 1)
+   - .log-description: Descrição em paragrafo curto
+   - .log-date: Data do log em cor clara
+   - .log-status: Badge de status (3 tipos: concluído, andamento, pendente)
+   - .log-progress: Texto adicional de progresso
+   - .log-actions: Container de botões ações
+   - .btn-small: Botões de ação pequenos
+   - .back-link: Link para voltar (posicionado no hader)
+   
+   ELEMENTOS HTML USADOS:
+   <section class="logs-section">: Contém todos os logs
+   <div class="log-item">: Wrapper de cada log (display: flex)
+   <div class="log-icon">: Ícone emoji
+   <div class="log-details">: Container de detalhes (flex: 1)
+   <h3>: Título do log
+   <p class="log-description">: Descrição texto
+   <p class="log-date">: Data do log
+   <span class="log-status">: Badge de status
+   <p class="log-progress">: Texto de progresso (opcional)
+   <div class="log-actions">: Container de botões
+   <button class="btn-small">: Botão de ação
+   
+   CLASSES DE STATUS:
+   .status-concluido: Verde claro (#8B41F2)
+   .status-andamento: Laranja (#0FA67B)
+   .status-pendente: Vermelho (#1F5AA6)
+   
+   ======================================== */
+
+.logs-content {
+    padding: 40px 30px;
+}
+
+.logs-section {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Item individual de log */
+.log-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 5px solid #8B41F2;
+}
+
+.log-item:hover {
+    box-shadow: 0 8px 25px rgba(107, 153, 151, 0.1);
+    transform: translateX(5px);
+}
+
+/* Ícone do log */
+.log-icon {
+    font-size: 2.5rem;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Detalhes do log */
+.log-details {
+    flex: 1;
+}
+
+.log-details h3 {
+    font-size: 1.3rem;
+    color: #1F5AA6;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.log-description {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.log-date {
+    font-size: 0.85rem;
+    color: #95a5a6;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Badges de status */
+.log-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.status-concluido {
+    background-color: rgba(107, 153, 151, 0.2);
+    color: #8B41F2;
+}
+
+.status-andamento {
+    background-color: rgba(138, 184, 168, 0.2);
+    color: #0FA67B;
+}
+
+.status-pendente {
+    background-color: rgba(84, 120, 125, 0.2);
+    color: #1F5AA6;
+}
+
+/* Progresso do log */
+.log-progress {
+    font-size: 0.9rem;
+    color: #0FA67B;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Ações do log */
+.log-actions {
+    display: flex;
+    gap: 10px;
+    min-width: 150px;
+    justify-content: flex-end;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #8B41F2;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-small:hover {
+    background-color: #1F5AA6;
+    transform: scale(1.05);
+}
+
+.btn-small:active {
+    transform: scale(0.98);
+}
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .logs-section {
+        padding: 0;
+    }
+
+    .log-item {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .log-icon {
+        min-width: auto;
+    }
+
+    .log-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .btn-small {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+/* Responsividade para telefones */
+@media (max-width: 480px) {
+    .logs-content {
+        padding: 20px 15px;
+    }
+
+    .log-item {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .log-icon {
+        font-size: 2rem;
+    }
+
+    .log-details h3 {
+        font-size: 1.1rem;
+    }
+
+    .log-description {
+        font-size: 0.9rem;
+    }
+
+    .log-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn-small {
+        width: 100%;
+        min-width: unset;
+    }
+}

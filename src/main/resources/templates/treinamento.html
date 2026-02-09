@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento - GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link rel="stylesheet" th:href="@{/css/treinamento-style.css}">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div th:replace="~{fragments :: login-modal}"></div>
+    
+    <div class="container-main">
+        <!-- Sidebar -->
+        <div th:replace="~{fragments :: sidebar('treinamento')}"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <header class="header-main">
+                <a th:href="@{/home}" class="back-link">← Voltar</a>
+                <h2>Treinamentos Essenciais</h2>
+                <p>Capacitacoes basicas para iniciar com seguranca</p>
+            </header>
+
+            <main class="main-content treinamento-content">
+                <section class="treinamento-intro">
+                    <h3>Seus cursos obrigatorios</h3>
+                    <p>Complete os treinamentos iniciais para liberar o acesso total aos sistemas.</p>
+                </section>
+
+                <section class="treinamento-grid">
+                    <div class="curso-card">
+                        <h4>Seguranca da Informacao</h4>
+                        <p>Boas praticas de senha, phishing e protecao de dados sensiveis.</p>
+                        <div class="curso-meta">
+                            <span class="curso-badge pendente">⏱ 40 min</span>
+                            <span class="curso-badge pendente">Pendente</span>
+                            <span class="curso-badge">Obrigatorio</span>
+                        </div>
+                        <a class="curso-acao" href="#">Iniciar curso →</a>
+                    </div>
+
+                    <div class="curso-card">
+                        <h4>Politicas e Conduta</h4>
+                        <p>Entenda o codigo de etica, convivencia e comunicacao interna.</p>
+                        <div class="curso-meta">
+                            <span class="curso-badge em-andamento">⏱ 30 min</span>
+                            <span class="curso-badge em-andamento">Em andamento</span>
+                            <span class="curso-badge">Obrigatorio</span>
+                        </div>
+                        <a class="curso-acao" href="#">Continuar →</a>
+                    </div>
+
+                    <div class="curso-card">
+                        <h4>Ferramentas do Dia a Dia</h4>
+                        <p>Guia rapido para e-mail, agenda, chat interno e VPN.</p>
+                        <div class="curso-meta">
+                            <span class="curso-badge">⏱ 25 min</span>
+                            <span class="curso-badge">Opcional</span>
+                        </div>
+                        <a class="curso-acao" href="#">Ver conteudo →</a>
+                    </div>
+
+                    <div class="curso-card">
+                        <h4>Processos de Suporte</h4>
+                        <p>Como abrir chamados, acompanhar SLAs e pedir acessos.</p>
+                        <div class="curso-meta">
+                            <span class="curso-badge concluido">✅ Concluido</span>
+                            <span class="curso-badge">Obrigatorio</span>
+                        </div>
+                        <a class="curso-acao" href="#">Revisar →</a>
+                    </div>
+
+                    <div class="curso-card">
+                        <h4>Integracao com a Equipe</h4>
+                        <p>Boas praticas de comunicacao, rituais e alinhamento.</p>
+                        <div class="curso-meta">
+                            <span class="curso-badge">⏱ 20 min</span>
+                            <span class="curso-badge">Opcional</span>
+                        </div>
+                        <a class="curso-acao" href="#">Iniciar →</a>
+                    </div>
+
+                    <div class="curso-card">
+                        <h4>Compliance e LGPD</h4>
+                        <p>Responsabilidades legais e tratamento correto de dados pessoais.</p>
+                        <div class="curso-meta">
+                            <span class="curso-badge pendente">⏱ 35 min</span>
+                            <span class="curso-badge pendente">Pendente</span>
+                            <span class="curso-badge">Obrigatorio</span>
+                        </div>
+                        <a class="curso-acao" href="#">Iniciar curso →</a>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <div th:replace="~{fragments :: footer}"></div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/login-modal.js}"></script>
+</body>
+</html>

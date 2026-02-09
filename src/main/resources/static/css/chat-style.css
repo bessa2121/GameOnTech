@@ -1,0 +1,379 @@
+/* ========================================
+   DOCUMENTAÇÃO: CSS - Página Chat
+   ========================================
+   
+   ELEMENTOS PRINCIPAIS:
+   - .chat-content: Container principal
+   - .chat-info: Seção de informação
+   - .chat-container: Wrapper da interface de chat
+   - .chat-header: Cabeçalho com contato info
+   - .chat-contact: Informações do contato (avatar + info)
+   - .contact-avatar: Iniciais da pessoa (circular)
+   - .contact-info: Nome e cargo
+   - .btn-reset: Botão para resetar chat
+   - .messages-area: Área onde mensagens aparecem (overflow-y: auto)
+   - .message-group: Agrupa mensagens do mesmo grupo (user/system)
+   - .message: Mensagem individual
+   - .quick-replies: Sugestões de perguntas (grid)
+   - .reply-btn: Botões de resposta rápida
+   - .message-input-container: Wrapper do input
+   - .message-input: Campo de texto
+   - .btn-send: Botão de enviar
+   
+   ELEMENTOS HTML USADOS:
+   <div class="chat-container">: Wrapper principal
+   <div class="chat-header">: Cabeçalho
+   <div class="messages-area" id="messagesArea">: Container de mensagens
+   <div class="message-group system">: Grupo de mensagens do sistema (gestor)
+   <div class="message">: Mensagem individual
+   <div class="quick-replies">: Container de sugestões
+   <button class="reply-btn">: Botões de sugestão
+   <div class="message-input-container">: Container do input
+   <input type="text" id="messageInput">: Campo de entrada
+   <button class="btn-send">: Botão de envio
+   <p>: Texto dentro das mensagens
+   
+   ======================================== */
+
+.chat-content {
+    padding: 40px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Seção info */
+.chat-info {
+    background: rgba(138, 184, 168, 0.15);
+    border-left: 5px solid #0FA67B;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.chat-info p {
+    color: #1F5AA6;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.chat-info strong {
+    font-weight: 700;
+}
+
+/* Container de chat */
+.chat-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    overflow: hidden;
+}
+
+/* Cabeçalho do chat */
+.chat-header {
+    padding: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(138, 184, 168, 0.1) 0%, rgba(107, 153, 151, 0.1) 100%);
+}
+
+/* Informações do contato */
+.chat-contact {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0FA67B 0%, #8B41F2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.contact-info h4 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0 0 3px 0;
+    font-weight: 700;
+}
+
+.contact-info p {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin: 0;
+}
+
+/* Botão reset */
+.btn-reset {
+    padding: 8px 16px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-reset:hover {
+    background-color: #d0d0d0;
+}
+
+/* Área de mensagens */
+.messages-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scroll-behavior: smooth;
+}
+
+/* Grupo de mensagens */
+.message-group {
+    display: flex;
+    gap: 10px;
+}
+
+.message-group.system {
+    justify-content: flex-start;
+}
+
+.message-group.user {
+    justify-content: flex-end;
+}
+
+/* Mensagem individual */
+.message {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    word-wrap: break-word;
+}
+
+.message-group.system .message {
+    background-color: #f5f5f5;
+    color: #2c3e50;
+    border-left: 3px solid #0FA67B;
+}
+
+.message-group.user .message {
+    background: linear-gradient(135deg, #0FA67B 0%, #8B41F2 100%);
+    color: white;
+}
+
+.message p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Sugestões de respostas */
+.quick-replies {
+    padding: 15px 20px;
+    border-top: 1px solid #f0f0f0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    background-color: #fafafa;
+}
+
+.reply-btn {
+    padding: 10px 15px;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #1F5AA6;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.reply-btn:hover {
+    border-color: #0FA67B;
+    background-color: rgba(138, 184, 168, 0.1);
+    color: #8B41F2;
+}
+
+.reply-btn:active {
+    transform: scale(0.98);
+}
+
+/* Container de input */
+.message-input-container {
+    padding: 15px 20px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    gap: 10px;
+    background-color: white;
+}
+
+/* Input de mensagem */
+.message-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.message-input:focus {
+    outline: none;
+    border-color: #0FA67B;
+}
+
+/* Botão de envio */
+.btn-send {
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #0FA67B 0%, #8B41F2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.btn-send:hover {
+    box-shadow: 0 4px 12px rgba(107, 153, 151, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-send:active {
+    transform: translateY(0);
+}
+
+/* Scrollbar personalizada */
+.messages-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+    background: #F2790F;
+    border-radius: 3px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background: #0FA67B;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .chat-content {
+        padding: 25px 15px;
+    }
+
+    .chat-container {
+        height: 600px;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .quick-replies {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+    }
+
+    .reply-btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .message-input {
+        font-size: 0.9rem;
+    }
+
+    .btn-send {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .chat-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .btn-reset {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .chat-content {
+        padding: 15px 10px;
+    }
+
+    .chat-container {
+        height: 500px;
+    }
+
+    .message {
+        max-width: 90%;
+        padding: 10px 12px;
+    }
+
+    .quick-replies {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .reply-btn {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+
+    .message-input-container {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .message-input {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .btn-send {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    .contact-info h4 {
+        font-size: 1rem;
+    }
+
+    .messages-area {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .message p {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">GameOnTech Onboarding</title>
+    <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
+    <link th:if="${additionalCss}" rel="stylesheet" th:href="@{${additionalCss}}">
+    <script th:if="${includeChart}" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    
+<!-- Login Modal Fragment -->
+<div th:fragment="login-modal">
+    <button class="login-button" id="loginOpen" type="button">Login</button>
+    <div class="login-modal" id="loginModal" aria-hidden="true">
+        <div class="login-modal__panel" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+            <button class="login-modal__close" id="loginClose" type="button" aria-label="Fechar">×</button>
+            <h3 id="loginTitle">Entrar</h3>
+            <form class="login-form">
+                <label for="loginEmail">Email</label>
+                <input id="loginEmail" type="email" name="email" placeholder="voce@empresa.com" required>
+                <label for="loginPassword">Senha</label>
+                <input id="loginPassword" type="password" name="password" placeholder="Sua senha" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Sidebar Fragment -->
+<aside th:fragment="sidebar(activePage)" class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo"><img th:src="@{/assets/front.png}" alt="Logo"></div>
+        <div class="sidebar-header-content">
+            <h3>Onboarding</h3>
+            <p>Portal do Colaborador</p>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a th:href="@{/home}" class="nav-link" th:classappend="${activePage == 'home'} ? 'active' : ''">
+            <img th:src="@{/assets/home (2).svg}" alt="Home" class="nav-icon-svg">
+            <span>Home</span>
+        </a>
+        <a th:href="@{/logs}" class="nav-link" th:classappend="${activePage == 'logs'} ? 'active' : ''">
+            <img th:src="@{/assets/chart-simple.svg}" alt="Logs" class="nav-icon-svg">
+            <span>Logs</span>
+        </a>
+        <a th:href="@{/trabalhos}" class="nav-link" th:classappend="${activePage == 'trabalhos'} ? 'active' : ''">
+            <img th:src="@{/assets/suitcase-alt.svg}" alt="Trabalhos" class="nav-icon-svg">
+            <span>Trabalhos</span>
+        </a>
+        <a th:href="@{/cronograma}" class="nav-link" th:classappend="${activePage == 'cronograma'} ? 'active' : ''">
+            <img th:src="@{/assets/calendar-clock.svg}" alt="Cronograma" class="nav-icon-svg">
+            <span>Cronograma</span>
+        </a>
+        <a th:href="@{/treinamento}" class="nav-link" th:classappend="${activePage == 'treinamento'} ? 'active' : ''">
+            <img th:src="@{/assets/treinamentosvg.svg}" alt="Treinamento" class="nav-icon-svg">
+            <span>Treinamento</span>
+        </a>
+        <a th:href="@{/politicas}" class="nav-link" th:classappend="${activePage == 'politicas'} ? 'active' : ''">
+            <img th:src="@{/assets/people-poll.svg}" alt="Políticas" class="nav-icon-svg">
+            <span>Políticas</span>
+        </a>
+        <a th:href="@{/feedback}" class="nav-link" th:classappend="${activePage == 'feedback'} ? 'active' : ''">
+            <img th:src="@{/assets/feedback.svg}" alt="Feedback" class="nav-icon-svg">
+            <span>Feedback</span>
+        </a>
+        <a th:href="@{/chat}" class="nav-link" th:classappend="${activePage == 'chat'} ? 'active' : ''">
+            <img th:src="@{/assets/comment.svg}" alt="Assistente Virtual" class="nav-icon-svg">
+            <span>Assistente Virtual</span>
+        </a>
+        <a th:href="@{/conversa-gerente}" class="nav-link" th:classappend="${activePage == 'conversa-gerente'} ? 'active' : ''">
+            <img th:src="@{/assets/gerentesvg.svg}" alt="Conversa com o Gerente" class="nav-icon-svg">
+            <span>Conversa com o Gerente</span>
+        </a>
+        <a th:href="@{/tarefas}" class="nav-link" th:classappend="${activePage == 'tarefas'} ? 'active' : ''">
+            <img th:src="@{/assets/task-checklist.svg}" alt="Tarefas" class="nav-icon-svg">
+            <span>Tarefas</span>
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <p>Precisa de ajuda?</p>
+        <p>Fale com seu gestor ou acesse o chat virtual.</p>
+    </div>
+</aside>
+
+<!-- Header Fragment -->
+<header th:fragment="header(title, subtitle, showBackButton)" class="header-main">
+    <a th:if="${showBackButton}" th:href="@{/home}" class="back-link">← Voltar</a>
+    <h2 th:text="${title}">Título da Página</h2>
+    <p th:if="${subtitle}" th:text="${subtitle}">Subtítulo da página</p>
+</header>
+
+<!-- Footer Fragment -->
+<footer th:fragment="footer" class="footer-main">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/logs}">Logs</a>
+            <a th:href="@{/trabalhos}">Trabalhos</a>
+            <a th:href="@{/cronograma}">Cronograma</a>
+            <a th:href="@{/treinamento}">Treinamento</a>
+            <a th:href="@{/politicas}">Políticas</a>
+            <a th:href="@{/feedback}">Feedback</a>
+            <a th:href="@{/chat}">Assistente Virtual</a>
+            <a th:href="@{/conversa-gerente}">Conversa com o Gerente</a>
+            <a th:href="@{/tarefas}">Tarefas</a>
+        </div>
+        <p>&copy; 2026 GameOnTech | João Vitor, Davi Tavares e Felipe Buso</p>
+    </div>
+</footer>
+
+<!-- Scripts Fragment -->
+<div th:fragment="scripts(scriptFiles)">
+    <script th:each="scriptFile : ${scriptFiles}" th:src="@{${scriptFile}}"></script>
+    <script th:src="@{/js/login-modal.js}"></script>
+</div>
+
+</body>
+</html>
