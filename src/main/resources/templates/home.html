@@ -26,8 +26,11 @@
             <main class="main-content">
                 <!-- Seção de boas-vindas -->
                 <section class="welcome-section">
-                    <h1>Olá, Bem vindo leo.buso! 👋</h1>
-                    <p>Estamos felizes em ter você conosco. Vamos começar sua jornada?</p>
+                    <div class="pixel-wrapper">
+                        <h1 id="pixel-title">Na escuta, Recruta? 🎖️</h1>
+                        <div id="pixel-canvas"></div> <!-- Onde os quadrados aleatórios vão ficar -->
+                    </div>
+                    <p>Sua missão na GameOnTech começa agora. Pronto para o Level 1 na GameOnTech?</p>
                 </section>
 
                 <!-- Seção de progresso -->
@@ -136,5 +139,6 @@
     <!-- Scripts -->
     <script th:src="@{/js/progress-chart.js}"></script>
     <script th:src="@{/js/login-modal.js}"></script>
+    <script th:src="@{/js/pixel-animation.js}"></script>
 </body>
 </html>
