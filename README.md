@@ -103,3 +103,37 @@ tipo(escopo opcional): descrição curta
 - `ci: configurar pipeline no GitHub Actions`
 - `chore: atualizar dependências no pom.xml`
 - `revert: revert "feat: adicionar endpoint de cadastro"`
+
+---
+
+## 1. Quais sinais mostram que um onboarding falhou logo no primeiro mês?
+
+## 2. Quais funcionalidades são essenciais em um onboarding digital eficiente?
+
+## 3. Vale mais guiar o colaborador passo a passo ou dar autonomia desde o início?
+
+## 4. Na avaliação de um hackathon, pesa mais a profundidade de uma feature ou a variedade de funcionalidades?
+
+## 5. Vale mais demonstrar segurança/autenticação bem feita ou focar só no fluxo funcional?
+
+## 6. Na apresentação final, é melhor focar no problema ou na solução técnica?
+
+## 7. Se pudesse dar apenas um conselho para melhorar o projeto em 7 dias, qual seria?
+
+---
+
+# Outros pontos importantes
+
+## A implementação do backend e do banco a nossa aplicação conta pontos positivos na avaliação?
+
+### Existe algum ponto do onboarding que geralmente é negligenciado pelas empresas?
+
+### É válido focar mais na experiência do estagiário ou também mostrar ferramentas para o gestor/mentor?
+
+### Logs de progresso e pendências fazem sentido como diferencial ou ficariam complexos demais para o tempo do evento?
+
+### Chat e assistente virtual agregam valor real ou podem ser vistos como “extra”?
+
+### O que costuma ser um erro técnico comum em projetos de hackathon?
+
+---
