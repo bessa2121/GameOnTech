@@ -25,7 +25,6 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @JdbcTypeCode(SqlTypes.CHAR)
     private UUID id;
 
     @Column(name = "email", unique = true, nullable = false)
