@@ -1,3 +1,5 @@
+package br.com.GameOnTech.Config;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class GerarHash {
