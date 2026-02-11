@@ -31,7 +31,7 @@
 <!-- Sidebar Fragment -->
 <aside th:fragment="sidebar(activePage)" class="sidebar">
     <div class="sidebar-header">
-        <div class="logo"><img th:src="@{/assets/front.png}" alt="Logo"></div>
+        <div class="logo"><img th:src="@{/assets/logo2.png}" alt="Logo"></div>
         <div class="sidebar-header-content">
             <h3>Onboarding</h3>
             <p>Portal do Colaborador</p>
@@ -125,9 +125,7 @@
                 <div class="tutorial-slide active">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder" id="tutorialImagePlaceholder">
-                                <p>📸 Home - Overview do Portal</p>
-                            </div>
+                            <img th:src="@{/assets/home.png}" alt="Home" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2 id="tutorialTitle">🎮 Bem-vindo ao GameOnTech!</h2>
@@ -145,9 +143,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>📊 Logs - Histórico</p>
-                            </div>
+                            <img th:src="@{/assets/logs.png}" alt="Logs" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>📊 Acompanhe seu Histórico</h2>
@@ -165,9 +161,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>💼 Trabalhos - Projetos</p>
-                            </div>
+                            <img th:src="@{/assets/trabalhos.png}" alt="Trabalhos" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>💼 Seus Trabalhos e Projetos</h2>
@@ -185,9 +179,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>📅 Cronograma - Agenda</p>
-                            </div>
+                            <img th:src="@{/assets/cronograma.png}" alt="Cronograma" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>📅 Seu Cronograma</h2>
@@ -195,7 +187,7 @@
                                 Veja todos os eventos, reuniões, treinamentos e momentos importantes que estão agendados para você durante o onboarding.
                             </p>
                             <p class="tutorial-motivation">
-                                Non-va perder nada! O cronograma mostra exatamente quando você tem compromissos importantes. Agenda tudo na sua agenda pessoal também! ⏰
+                                Não vá perder nada! O cronograma mostra exatamente quando você tem compromissos importantes. Agende tudo na sua agenda pessoal também! ⏰
                             </p>
                         </div>
                     </div>
@@ -205,9 +197,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>🎓 Treinamento - Cursos</p>
-                            </div>
+                            <img th:src="@{/assets/treinamento.png}" alt="Treinamento" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>🎓 Cursos e Treinamentos</h2>
@@ -225,9 +215,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>📋 Políticas - Documentos</p>
-                            </div>
+                            <img th:src="@{/assets/politicas.png}" alt="Políticas" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>📋 Políticas e Cultura</h2>
@@ -245,9 +233,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>💬 Feedback - Avaliações</p>
-                            </div>
+                            <img th:src="@{/assets/Feedback.png}" alt="Feedback" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>💬 Receba Feedback</h2>
@@ -265,9 +251,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>🤖 Assistente Virtual - Chat</p>
-                            </div>
+                            <img th:src="@{/assets/assist_Virtual.png}" alt="Assistente Virtual" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>🤖 Assistente Virtual</h2>
@@ -285,9 +269,7 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>👔 Conversa com Gerente</p>
-                            </div>
+                            <img th:src="@{/assets/gerente.png}" alt="Conversa com Gerente" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>👔 Pratique com seu Gerente</h2>
@@ -305,14 +287,12 @@
                 <div class="tutorial-slide">
                     <div class="tutorial-content">
                         <div class="tutorial-image-section">
-                            <div class="tutorial-image-placeholder">
-                                <p>✅ Tarefas - To-do List</p>
-                            </div>
+                            <img th:src="@{/assets/tarefas.png}" alt="Tarefas" class="tutorial-image">
                         </div>
                         <div class="tutorial-text-section">
                             <h2>✅ Suas Tarefas</h2>
                             <p class="tutorial-description">
-                                Este é seu painel de tarefas! Aqui vous consegue ver tudo o que precisa fazer, marcar como concluído e acompanhar seu progresso.
+                                Este é seu painel de tarefas! Aqui você consegue ver tudo o que precisa fazer, marcar como concluído e acompanhar seu progresso.
                             </p>
                             <p class="tutorial-motivation">
                                 Nada melhor do que a satisfação de marcar uma tarefa como feita! Continue conquistando seus objetivos dia a dia! 🎉
