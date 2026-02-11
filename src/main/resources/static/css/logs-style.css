@@ -10,14 +10,18 @@
    - .log-details: Informações do log (flex: 1)
    - .log-description: Descrição em paragrafo curto
    - .log-date: Data do log em cor clara
-   - .log-status: Badge de status (3 tipos: concluído, andamento, pendente)
+   - .log-status: Badge de status (vários tipos: concluído, andamento, pendente, analise, aberto)
    - .log-progress: Texto adicional de progresso
    - .log-actions: Container de botões ações
    - .btn-small: Botões de ação pequenos
-   - .back-link: Link para voltar (posicionado no hader)
+   - .back-link: Link para voltar (posicionado no header)
+   - .logs-tabs: Container das abas (pessoal/empresarial)
+   - .tab-btn: Botões das abas
+   - .filter: Container do filtro de status
+   - .hidden: Classe para ocultar itens filtrados
    
    ELEMENTOS HTML USADOS:
-   <section class="logs-section">: Contém todos os logs
+   <section class="logs-section">: Contém todos os logs (uma por aba)
    <div class="log-item">: Wrapper de cada log (display: flex)
    <div class="log-icon">: Ícone emoji
    <div class="log-details">: Container de detalhes (flex: 1)
@@ -28,11 +32,17 @@
    <p class="log-progress">: Texto de progresso (opcional)
    <div class="log-actions">: Container de botões
    <button class="btn-small">: Botão de ação
+   <div class="logs-tabs">: Container das abas
+   <button class="tab-btn">: Botões das abas
+   <div class="filter">: Filtro de status
+   <select>: Select para filtro
    
    CLASSES DE STATUS:
    .status-concluido: Verde claro (#8B41F2)
    .status-andamento: Laranja (#0FA67B)
    .status-pendente: Vermelho (#1F5AA6)
+   .status-analise: Azul (#168CC5)
+   .status-aberto: Marrom (#BF6E3F)
    
    ======================================== */
 
@@ -43,6 +53,74 @@
 .logs-section {
     max-width: 1000px;
     margin: 0 auto;
+}
+
+/* Abas */
+.logs-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #e0e0e0;
+    max-width: 230px;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: -2px;
+}
+
+.tab-btn:hover {
+    color: #1F5AA6;
+}
+
+.tab-btn.active {
+    color: #8B41F2;
+    border-bottom-color: #8B41F2;
+}
+
+/* Seções de logs */
+.logs-section {
+    display: none;
+}
+
+.logs-section.active {
+    display: block;
+}
+
+/* Filtro */
+.filter {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.filter select {
+    padding: 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.filter select:focus {
+    outline: none;
+    border-color: #8B41F2;
 }
 
 /* Item individual de log */
@@ -62,6 +140,10 @@
 .log-item:hover {
     box-shadow: 0 8px 25px rgba(107, 153, 151, 0.1);
     transform: translateX(5px);
+}
+
+.log-item.hidden {
+    display: none;
 }
 
 /* Ícone do log */
@@ -125,6 +207,16 @@
     color: #1F5AA6;
 }
 
+.status-analise {
+    background-color: rgba(22, 140, 197, 0.2);
+    color: #168CC5;
+}
+
+.status-aberto {
+    background-color: rgba(191, 110, 63, 0.2);
+    color: #BF6E3F;
+}
+
 /* Progresso do log */
 .log-progress {
     font-size: 0.9rem;
@@ -162,8 +254,38 @@
     transform: scale(0.98);
 }
 
-/* Responsividade para tablets */
+/* ===== RESPONSIVIDADE ===== */
+
+/* Tablets maiores */
+@media (max-width: 1024px) {
+    /* Ajustes similares aos modelos, mas para logs, manter estrutura */
+    .logs-content {
+        padding: 35px 25px;
+    }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
+    .logs-content {
+        padding: 20px;
+    }
+
+    .logs-tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .tab-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .filter {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
     .logs-section {
         padding: 0;
     }
@@ -190,10 +312,28 @@
     }
 }
 
-/* Responsividade para telefones */
+/* Smartphones */
 @media (max-width: 480px) {
     .logs-content {
         padding: 20px 15px;
+    }
+
+    .logs-tabs {
+        gap: 5px;
+    }
+
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .filter {
+        gap: 5px;
+    }
+
+    .filter select {
+        font-size: 0.8rem;
+        padding: 6px 10px;
     }
 
     .log-item {

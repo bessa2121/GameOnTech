@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,97 +8,209 @@
     <link rel="stylesheet" th:href="@{/css/logs-style.css}">
 </head>
 <body>
-    <!-- Login Modal -->
-    <div th:replace="~{fragments :: login-modal}"></div>
-    
-    <div class="container-main">
-        <!-- Sidebar -->
-        <div th:replace="~{fragments :: sidebar('logs')}"></div>
+<div class="container-main">
+    <!-- Sidebar -->
+    <div th:replace="~{fragments :: sidebar('logs')}"></div>
 
-        <!-- Conteúdo principal -->
-        <div class="content">
-            <header class="header-main">
-                <a th:href="@{/home}" class="back-link">← Voltar</a>
-                <h2>Logs de Atividades</h2>
-                <p>Acompanhe seu progresso e registre suas atividades de integração</p>
-            </header>
+    <!-- Conteúdo principal -->
+    <div class="content">
+        <header class="header-main">
+            <a th:href="@{/home}" class="back-link">← Voltar</a>
+            <h2>Logs de Atividades</h2>
+            <p>Acompanhe seu progresso e registre suas atividades de integração</p>
+        </header>
 
-            <main class="main-content logs-content">
-                <!-- Lista de logs -->
-                <section class="logs-section">
-                    <div class="log-item">
-                        <div class="log-icon">📄</div>
-                        <div class="log-details">
-                            <h3>Leitura do manual de boas-vindas</h3>
-                            <p class="log-description">Revisar o documento de apresentação da empresa</p>
-                            <p class="log-date">2 de fevereiro</p>
-                            <span class="log-status status-concluido">✓ Concluído</span>
-                        </div>
-                        <div class="log-actions">
-                            <button class="btn-small">Ver Detalhes</button>
-                        </div>
+        <main class="main-content logs-content">
+            <!-- Abas/Filtros -->
+            <div class="logs-tabs">
+                <button class="tab-btn active" data-filter="pessoal">Pessoal</button>
+                <button class="tab-btn" data-filter="empresarial">Empresarial</button>
+            </div>
+
+            <!-- Seção Pessoal -->
+            <section id="pessoal" class="logs-section active">
+                <div class="log-item">
+                    <div class="log-icon">📄</div>
+                    <div class="log-details">
+                        <h3>Leitura do manual de boas-vindas</h3>
+                        <p class="log-description">Revisar o documento de apresentação da empresa</p>
+                        <p class="log-date">2 de fevereiro</p>
+                        <span class="log-status status-concluido">✓ Concluído</span>
                     </div>
-
-                    <div class="log-item">
-                        <div class="log-icon">📚</div>
-                        <div class="log-details">
-                            <h3>Treinamento de segurança</h3>
-                            <p class="log-description">Curso obrigatório sobre normas de segurança</p>
-                            <p class="log-date">4 de fevereiro</p>
-                            <span class="log-status status-andamento">⟳ Em andamento</span>
-                            <p class="log-progress">Progresso: 60% (clique para continuar)</p>
-                        </div>
-                        <div class="log-actions">
-                            <button class="btn-small">Continuar</button>
-                        </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Ver Detalhes</button>
                     </div>
+                </div>
 
-                    <div class="log-item">
-                        <div class="log-icon">👥</div>
-                        <div class="log-details">
-                            <h3>Reunião com a equipe</h3>
-                            <p class="log-description">Apresentação para os colegas do departamento</p>
-                            <p class="log-date">6 de fevereiro</p>
-                            <span class="log-status status-pendente">⏱ Pendente</span>
-                        </div>
-                        <div class="log-actions">
-                            <button class="btn-small">Agendar</button>
-                        </div>
+                <div class="log-item">
+                    <div class="log-icon">📚</div>
+                    <div class="log-details">
+                        <h3>Treinamento de segurança</h3>
+                        <p class="log-description">Curso obrigatório sobre normas de segurança</p>
+                        <p class="log-date">4 de fevereiro</p>
+                        <span class="log-status status-andamento">⟳ Em andamento</span>
+                        <p class="log-progress">Progresso: 60% (clique para continuar)</p>
                     </div>
-
-                    <div class="log-item">
-                        <div class="log-icon">💻</div>
-                        <div class="log-details">
-                            <h3>Configuração de ferramentas de desenvolvimento</h3>
-                            <p class="log-description">Instalar e configurar IDEs e dependências</p>
-                            <p class="log-date">Iniciado em 3 de fevereiro</p>
-                            <span class="log-status status-concluido">✓ Concluído</span>
-                        </div>
-                        <div class="log-actions">
-                            <button class="btn-small">Ver Certificado</button>
-                        </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Continuar</button>
                     </div>
+                </div>
 
-                    <div class="log-item">
-                        <div class="log-icon">📋</div>
-                        <div class="log-details">
-                            <h3>Assinatura de documentos</h3>
-                            <p class="log-description">Assinar contrato e políticas da empresa</p>
-                            <p class="log-date">1 de fevereiro</p>
-                            <span class="log-status status-concluido">✓ Concluído</span>
-                        </div>
-                        <div class="log-actions">
-                            <button class="btn-small">Download</button>
-                        </div>
+                <div class="log-item">
+                    <div class="log-icon">👥</div>
+                    <div class="log-details">
+                        <h3>Reunião com a equipe</h3>
+                        <p class="log-description">Apresentação para os colegas do departamento</p>
+                        <p class="log-date">6 de fevereiro</p>
+                        <span class="log-status status-pendente">⏱ Pendente</span>
                     </div>
-                </section>
-            </main>
+                    <div class="log-actions">
+                        <button class="btn-small">Agendar</button>
+                    </div>
+                </div>
 
-            <!-- Footer -->
-            <div th:replace="~{fragments :: footer}"></div>
-        </div>
+                <div class="log-item">
+                    <div class="log-icon">💻</div>
+                    <div class="log-details">
+                        <h3>Configuração de ferramentas de desenvolvimento</h3>
+                        <p class="log-description">Instalar e configurar IDEs e dependências</p>
+                        <p class="log-date">Iniciado em 3 de fevereiro</p>
+                        <span class="log-status status-concluido">✓ Concluído</span>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Ver Certificado</button>
+                    </div>
+                </div>
+
+                <div class="log-item">
+                    <div class="log-icon">📋</div>
+                    <div class="log-details">
+                        <h3>Assinatura de documentos</h3>
+                        <p class="log-description">Assinar contrato e políticas da empresa</p>
+                        <p class="log-date">1 de fevereiro</p>
+                        <span class="log-status status-concluido">✓ Concluído</span>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Download</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Empresarial -->
+            <section id="empresarial" class="logs-section">
+                <div class="filter">
+                    <label>Filtrar por Status:</label>
+                    <select id="status-filter" onchange="filterLogs()">
+                        <option value="all">Todos</option>
+                        <option value="em-analise">Em Análise</option>
+                        <option value="em-andamento">Em Andamento</option>
+                        <option value="concluido">Concluído</option>
+                        <option value="em-aberto">Em Aberto</option>
+                    </select>
+                </div>
+                <div class="log-item" data-status="concluido">
+                    <div class="log-icon">📄</div>
+                    <div class="log-details">
+                        <h3>Projeto Alpha - Relatório Final</h3>
+                        <p class="log-description">Entrega do relatório de conclusão do projeto</p>
+                        <p class="log-date">15 de dezembro de 2022</p>
+                        <span class="log-status status-concluido">✓ Concluído</span>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <div class="log-item" data-status="em-andamento">
+                    <div class="log-icon">📚</div>
+                    <div class="log-details">
+                        <h3>Auditoria Interna - Fase 2</h3>
+                        <p class="log-description">Revisão de processos internos</p>
+                        <p class="log-date">Iniciado em 10 de março de 2023</p>
+                        <span class="log-status status-andamento">⟳ Em Andamento</span>
+                        <p class="log-progress">Progresso: 75%</p>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Continuar</button>
+                    </div>
+                </div>
+
+                <div class="log-item" data-status="em-analise">
+                    <div class="log-icon">👥</div>
+                    <div class="log-details">
+                        <h3>Reunião Estratégica - Q4 2023</h3>
+                        <p class="log-description">Planejamento para o último trimestre</p>
+                        <p class="log-date">Agendado para 20 de outubro de 2023</p>
+                        <span class="log-status status-analise">🔍 Em Análise</span>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Revisar</button>
+                    </div>
+                </div>
+
+                <div class="log-item" data-status="em-aberto">
+                    <div class="log-icon">💻</div>
+                    <div class="log-details">
+                        <h3>Implementação de Sistema Beta</h3>
+                        <p class="log-description">Desenvolvimento e teste do novo sistema</p>
+                        <p class="log-date">Pendente desde 5 de janeiro de 2024</p>
+                        <span class="log-status status-aberto">⏱ Em Aberto</span>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Iniciar</button>
+                    </div>
+                </div>
+
+                <div class="log-item" data-status="concluido">
+                    <div class="log-icon">📋</div>
+                    <div class="log-details">
+                        <h3>Treinamento Corporativo - Liderança</h3>
+                        <p class="log-description">Curso avançado para gestores</p>
+                        <p class="log-date">Concluído em 30 de junho de 2023</p>
+                        <span class="log-status status-concluido">✓ Concluído</span>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Ver Certificado</button>
+                    </div>
+                </div>
+
+                <div class="log-item" data-status="em-andamento">
+                    <div class="log-icon">🔧</div>
+                    <div class="log-details">
+                        <h3>Manutenção de Infraestrutura</h3>
+                        <p class="log-description">Atualização de servidores e redes</p>
+                        <p class="log-date">Iniciado em 15 de fevereiro de 2024</p>
+                        <span class="log-status status-andamento">⟳ Em Andamento</span>
+                        <p class="log-progress">Progresso: 40%</p>
+                    </div>
+                    <div class="log-actions">
+                        <button class="btn-small">Continuar</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <div th:replace="~{fragments :: footer}"></div>
     </div>
-    
-    <script th:src="@{/js/login-modal.js}"></script>
+</div>
+
+<!-- Sidebar lateral -->
+<div id="profileSidebar" class="sidebar-right">
+    <button id="closeProfile" class="sidebar-close">×</button>
+    <div class="profile-box">
+        <img src="/assets/Caricatura.png" alt="Foto do usuário" class="profile-avatar">
+        <span class="profile-label">Logado como</span>
+        <span class="profile-email">colaborador@gameontech.com</span>
+    </div>
+</div>
+
+<script th:src="@{/js/profile-sidebar.js}"></script>
+
+<!-- Avatar flutuante (abre sidebar) -->
+<div class="profile-trigger" id="profileTrigger">
+    <img src="/assets/Caricatura.png" alt="Perfil">
+</div>
+
 </body>
 </html>
