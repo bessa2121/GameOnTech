@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>GameOnTech</title>
-
-    <!-- Redirecionamento automático -->
-    <meta http-equiv="refresh" content="0; url=/home">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Hospital</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-<p>Redirecionando para o portal...</p>
+
+<!-- Figuras redondas -->
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+<div class="circle circle3"></div>
+<div class="circle circle4"></div>
+
+<div class="login-container fade-in">
+    <h2>Login</h2>
+
+    <!-- 🔐 LOGIN VIA SPRING SECURITY -->
+    <form method="post" action="/login">
+
+        <label>Email:</label>
+        <input
+                type="email"
+                name="username"
+                placeholder="Digite seu email"
+                required
+        />
+
+        <label>Senha:</label>
+        <input
+                type="password"
+                name="password"
+                placeholder="Digite sua senha"
+                required
+        />
+
+        <button type="submit">Entrar</button>
+    </form>
+
+    <!-- Mensagem de erro opcional -->
+    <div th:if="${param.error}" class="error-message">
+        Email ou senha inválidos
+    </div>
+
+    <!-- Logout message opcional -->
+    <div th:if="${param.logout}" class="success-message">
+        Logout realizado com sucesso
+    </div>
+</div>
+
+<script th:src="@{/js/animations.js}"></script>
+
 </body>
 </html>

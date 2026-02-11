@@ -28,40 +28,47 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
                 .csrf(csrf -> csrf.disable())
+
                 .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 )
+
                 .authorizeHttpRequests(auth -> auth
-                        // 🔓 páginas públicas
+
                         .requestMatchers(
                                 "/",
                                 "/login",
-                                "/home",
                                 "/chat",
                                 "/cronograma",
                                 "/politicas",
                                 "/trabalhos",
                                 "/treinamento",
-                                "/logs"
+                                "/css/**",
+                                "/js/**",
+                                "/assets/**"
                         ).permitAll()
 
-                        // 🔓 arquivos estáticos (ajustado para caminhos resolvidos pelo Thymeleaf)
-                        .requestMatchers(
-                                "/css/**",  // Permite /css/palette.css, etc.
-                                "/js/**",   // Permite /js/progress-chart.js, etc.
-                                "/assets/**"  // Permite /assets/front.png, /assets/*.svg, etc.
-                        ).permitAll()
+                        .requestMatchers("/home").authenticated()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
 
-                        // 🔓 API pública (mesmo sem JWT, permite endpoints)
-                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                        .anyRequest().authenticated()
+                )
 
-                        // 🔓 Permite tudo o resto (remove proteção, deixa público)
-                        .anyRequest().permitAll()
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/home", true)
+                        .permitAll()
+                )
+
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
                 );
 
         return http.build();
     }
+
 }

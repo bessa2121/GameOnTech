@@ -1,0 +1,235 @@
+/* ===== VARIÁVEIS DE CORES ===== */
+:root {
+    --color1: #1f5aa6;
+    --color2: #2a7ec4;
+    --color3: #3a94d8;
+    --color4: #ff6b35;
+    --color5: #f7b731;
+    --color6: #5f27cd;
+    --text-dark: #2c3e50;
+    --text-light: #ecf0f1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--color1) 0%, var(--color2) 50%, var(--color6) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ===== CÍRCULOS DECORATIVOS ===== */
+.circle {
+    position: fixed;
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.circle1 {
+    width: 300px;
+    height: 300px;
+    background: var(--color4);
+    top: -100px;
+    right: -100px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.circle2 {
+    width: 200px;
+    height: 200px;
+    background: var(--color5);
+    bottom: -50px;
+    left: -50px;
+    animation: float 8s ease-in-out infinite 1s;
+}
+
+.circle3 {
+    width: 250px;
+    height: 250px;
+    background: var(--color3);
+    top: 50%;
+    left: 5%;
+    animation: float 7s ease-in-out infinite 2s;
+}
+
+.circle4 {
+    width: 150px;
+    height: 150px;
+    background: var(--color6);
+    bottom: 20%;
+    right: 10%;
+    animation: float 9s ease-in-out infinite 1.5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+/* ===== CONTAINER LOGIN ===== */
+.login-container {
+    background: white;
+    padding: 48px 40px;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 10;
+}
+
+.login-container h2 {
+    color: var(--color1);
+    font-size: 28px;
+    margin-bottom: 32px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* ===== FORMULÁRIO ===== */
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-container label {
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.login-container input {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container input:focus {
+    outline: none;
+    border-color: var(--color1);
+    box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.1);
+}
+
+.login-container button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--color1) 0%, var(--color2) 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 12px;
+}
+
+.login-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(31, 90, 166, 0.3);
+}
+
+.login-container button:active {
+    transform: translateY(0);
+}
+
+/* ===== MENSAGENS ===== */
+.error-message {
+    background: #fee;
+    color: #c33;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border-left: 4px solid #c33;
+    font-size: 14px;
+    margin-top: 16px;
+    animation: slideDown 0.3s ease;
+}
+
+.success-message {
+    background: #efe;
+    color: #3c3;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border-left: 4px solid #3c3;
+    font-size: 14px;
+    margin-top: 16px;
+    animation: slideDown 0.3s ease;
+}
+
+/* ===== ANIMAÇÕES ===== */
+.fade-in {
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 32px 24px;
+        margin: 20px;
+    }
+
+    .login-container h2 {
+        font-size: 24px;
+    }
+
+    .circle1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle2 {
+        width: 150px;
+        height: 150px;
+    }
+
+    .circle3 {
+        width: 180px;
+        height: 180px;
+    }
+
+    .circle4 {
+        width: 100px;
+        height: 100px;
+    }
+}

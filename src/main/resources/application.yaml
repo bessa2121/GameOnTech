@@ -2,6 +2,9 @@ spring:
   application:
     name: GameOnTech
 
+  profiles:
+    active: dev
+
   datasource:
     url: jdbc:mysql://localhost:3306/gameon?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false
     username: root
@@ -21,17 +24,3 @@ spring:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
-
-server:
-  port: 8080
-  error:
-    include-message: always
-
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE
-
-web:
-  resources:
-    static-locations: classpath:/static/
