@@ -2,25 +2,31 @@ spring:
   application:
     name: GameOnTech
 
-  profiles:
-    active: dev
-
   datasource:
+<<<<<<< HEAD
     url: jdbc:postgresql://localhost:5432/gameon
     username: postgres
     password: root
+=======
+    url: jdbc:postgresql://dpg-d66dt46sb7us73e7m4j0-a/gameon_rcce?sslmode=require
+    username: gameon_rcce_user
+    password: D4u1jMRrcqWP72hfPSSy8Ar0BsyER6Og
+>>>>>>> c33a5cf0ce4fd7f29a73ac7aa05091fe351cb70f
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   flyway:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
+
+server:
+  port: 8080
