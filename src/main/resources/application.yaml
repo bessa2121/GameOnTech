@@ -3,7 +3,7 @@ spring:
     name: GameOnTech
 
   datasource:
-    url: jdbc:postgresql://dpg-d66dt46sb7us73e7m4j0-a/gameon_rcce
+    url: jdbc:postgresql://dpg-d66dt46sb7us73e7m4j0-a/gameon_rcce?sslmode=require
     username: gameon_rcce_user
     password: D4u1jMRrcqWP72hfPSSy8Ar0BsyER6Og
     driver-class-name: org.postgresql.Driver
