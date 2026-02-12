@@ -35,12 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (filter === 'todos') {
                 item.style.display = 'block';
             } else {
-                // Remove o 'status-' prefix para comparar
+                // Remove o 'status-' prefix e o 's' final para comparar
                 const itemStatus = Array.from(item.classList)
                     .find(cls => cls.startsWith('status-'))
                     ?.replace('status-', '');
-                
-                if (itemStatus === filter) {
+
+                // Remove o 's' do filtro para comparar (pendentes -> pendente, concluidos -> concluido)
+                const normalizedFilter = filter.replace(/s$/, '');
+
+                if (itemStatus === normalizedFilter) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
@@ -54,10 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             // Remove classe active de todos
             tabBtns.forEach(b => b.classList.remove('active'));
-            
+
             // Adiciona classe active ao clicado
             this.classList.add('active');
-            
+
             // Filtra os trabalhos
             const filter = this.getAttribute('data-filter');
             filterTrabalhos(filter);

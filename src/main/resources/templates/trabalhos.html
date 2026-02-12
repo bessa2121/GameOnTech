@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabalhos - GameOnTech Onboarding</title>
+    <title>Trabalhos - StartLine Onboarding</title>
     <link rel="stylesheet" th:href="@{/css/styles-palette1.css}">
     <link rel="stylesheet" th:href="@{/css/trabalhos-style.css}">
 </head>
 <body>
+<!-- Login Modal -->
+<div th:replace="~{fragments :: login-modal}"></div>
+
 <div class="container-main">
     <!-- Sidebar -->
     <div th:replace="~{fragments :: sidebar('trabalhos')}"></div>
@@ -124,33 +127,7 @@
     </div>
 </div>
 
-<div class="profile-box">
-    <img src="/assets/Caricatura.png"
-         alt="Foto do usuário"
-         class="profile-avatar">
-
-    <span class="profile-label">Logado como</span>
-
-    <!-- Email real do usuário logado -->
-    <span class="profile-email" sec:authentication="principal.email"></span>
-</div>
-
-<!-- Avatar flutuante (abre sidebar) -->
-<div class="profile-trigger" id="profileTrigger">
-    <img src="/assets/Caricatura.png" alt="Perfil">
-</div>
-
-<!-- Sidebar lateral -->
-<div id="profileSidebar" class="sidebar-right">
-    <button id="closeProfile" class="sidebar-close">×</button>
-    <div class="profile-box">
-        <img src="/assets/Caricatura.png" alt="Foto do usuário" class="profile-avatar">
-        <span class="profile-label">Logado como</span>
-        <span class="profile-email">colaborador@gameontech.com</span>
-    </div>
-</div>
-
-<script th:src="@{/js/profile-sidebar.js}"></script>
 <script th:src="@{/js/trabalhos-filter.js}"></script>
+<script th:src="@{/js/login-modal.js}"></script>
 </body>
 </html>
