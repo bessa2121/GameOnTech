@@ -6,9 +6,15 @@ spring:
     active: dev
 
   datasource:
+<<<<<<< HEAD
     url: jdbc:postgresql://localhost:5432/gameon
     username: postgres
     password: root
+=======
+    url: jdbc:postgresql://dpg-d66dt46sb7us73e7m4j0-a/gameon_rcce?sslmode=require
+    username: gameon_rcce_user
+    password: D4u1jMRrcqWP72hfPSSy8Ar0BsyER6Og
+>>>>>>> baed3132da573cba0b7979d99055db5354bc4348
     driver-class-name: org.postgresql.Driver
 
   jpa:
