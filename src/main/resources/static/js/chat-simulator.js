@@ -1,29 +1,3 @@
-/* ========================================
-   DOCUMENTAÇÃO: JavaScript - Simulador de Chat
-   ========================================
-   
-   ELEMENTOS MANIPULADOS:
-   - <div id="messagesArea">: Área onde aparecem mensagens
-   - <input id="messageInput">: Campo de entrada
-   - <button class="btn-send">: Botão de envio
-   - <button class="reply-btn">: Botões de sugestão rápida
-   
-   FUNÇÕES PRINCIPAIS:
-   - sendMessage(msg): Envia mensagem ou pega do input
-   - addMessage(text, isUser): Adiciona mensagem ao chat
-   - getManagerResponse(userMessage): Retorna resposta do gestor baseada em palavra-chave
-   - handleKeyPress(event): Detecta Enter no input
-   - resetChat(): Limpa o chat
-   
-   LÓGICA:
-   1. Usuário envia mensagem (typing ou quick reply)
-   2. Mensagem do usuário aparece alinhada à direita (class="user")
-   3. Simula delay (500ms) para resposta do gestor
-   4. Resposta aparece alinhada à esquerda (class="system")
-   5. Scroll automático para última mensagem
-   
-   ======================================== */
-
 function sendMessage(quickReply = null) {
     const input = document.getElementById('messageInput');
     const message = quickReply || input.value.trim();
@@ -63,60 +37,141 @@ function addMessage(text, isUser) {
     messagesArea.scrollTop = messagesArea.scrollHeight;
 }
 
+function removeAccents(str) {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
 function getManagerResponse(userMessage) {
-    const lowerMessage = userMessage.toLowerCase();
-    
-    // Respostas baseadas em keywords
-    const responses = {
-        'oque eu devo fazer|próximas tarefas|próximos passos': {
-            response: 'Você tem alguns itens importantes para esta semana:\n\n1. Configurar o ambiente de desenvolvimento\n2. Participar da reunião de alinhamento de sprint (amanhã às 09:00)\n3. Revisar a documentação do projeto\n4. Fazer uma 1-on-1 comigo\n\nQuals desses você gostaria de abordar primeiro?',
-            keywords: ['oque eu devo|próximas tarefas|próximos passos|o que devo']
+    const lowerMessage = removeAccents(userMessage.toLowerCase());
+
+    const responses = [
+        {
+            keywords: ['o que devo', 'proximas tarefas', 'proximos passos'],
+            response: `Você tem alguns itens importantes para esta semana:
+
+1. Configurar o ambiente de desenvolvimento
+2. Participar da reunião de alinhamento de sprint (amanhã às 09:00)
+3. Revisar a documentação do projeto
+4. Fazer uma 1-on-1 comigo
+
+Qual desses você gostaria de abordar primeiro?`
         },
-        'como estou indo|feedback|meu desempenho|avaliação': {
-            response: 'Você está indo muito bem! Sua integração foi excelente. Gosto do sua qualidade de código e sua atitude com o time. Continue assim!\n\nUma dica: documente um pouco mais seu trabalho, para que outros entendam o raciocínio. Podemos conversar mais sobre isso em nossa próxima 1-on-1.',
-            keywords: ['como estou|feedback|desempenho|avaliação|como está']
+        {
+            keywords: ['como estou', 'feedback', 'desempenho', 'avaliacao'],
+            response: `Você está indo muito bem! Sua integração foi excelente.
+
+Gosto da sua qualidade de código e da sua atitude com o time. Continue assim!
+
+Uma dica: documente um pouco mais seu trabalho para que outros entendam seu raciocínio.`
         },
-        'com quem devo falar|de quem devo|qual departamento|técnico': {
-            response: 'Depende do que você precisa:\n\n- Problemas técnicos: Fale com Carlos Silva (Líder Técnico)\n- Questões de RH/Benefícios: Maria (Recursos Humanos)\n- Infraestrutura: Fale comigo ou com o time de TI\n- Dúvidas sobre projeto: Seu scrum master Bruno\n\nMas fique à vontade para vir comigo primeiro, se quiser!',
-            keywords: ['com quem|de quem|qual departamento|técnico|falar com']
+        {
+            keywords: ['com quem', 'qual departamento', 'tecnico', 'falar com'],
+            response: `Depende do que você precisa:
+
+- Problemas técnicos: Carlos (Líder Técnico)
+- RH/Benefícios: Maria
+- Infraestrutura: Time de TI
+- Projeto: Scrum Master Bruno
+
+Se preferir, pode falar comigo primeiro!`
         },
-        'trabalho em equipe|colaborar|trabalhar com|reunião': {
-            response: 'Ótima pergunta! Nossa equipe valoriza:\n\n✓ Comunicação clara e frequente\n✓ Colaboração genuína\n✓ Dar e receber feedback construtivo\n✓ Ajudar os colegas quando possível\n✓ Ser "dona" do seu trabalho\n\nNão hesite em chamar alguém para pair programming ou tirar dúvidas.',
-            keywords: ['trabalho em equipe|colaborar|trabalhar com|reunião']
+        {
+            keywords: ['beneficios', 'vale', 'plano', 'saude', 'auxilio'],
+            response: `Você tem acesso a:
+
+💊 Plano de saúde
+🦷 Plano odontológico
+🍽️ Vale-refeição
+🚌 Vale-transporte
+💻 Cursos e certificações
+🏋️ Academia interna
+
+A Maria do RH pode explicar melhor!`
         },
-        'objetivos|metas|desenvolvimento|próximos 3 meses': {
-            response: 'Vamos definir seus objetivos para os próximos 3 meses na nossa próxima 1-on-1 (quinta-feira). Mas alguns iniciais podem ser:\n\n1. Dominar o stack técnico da empresa\n2. Entregar sua primeira feature completa\n3. Melhorar documentação de código\n4. Fazer pair programming com 2-3 membros do time\n\nCom isso, você estará no caminho certo!',
-            keywords: ['objetivos|metas|desenvolvimento|próximos 3 meses']
+        {
+            keywords: ['ferias', 'licenca', 'home office', 'registrar ponto', 'solicitar ferias', 'rh e ponto'],
+            response: `Para RH e ponto:
+
+- Registrar ponto: Use o app interno ou portal RH (acesse via intranet).
+- Solicitar férias: Entre no sistema RH e submeta o pedido com antecedência de 30 dias.
+- Home office: Disponível 2x por semana, solicite via e-mail para seu gestor.
+
+Precisa de ajuda com algo específico?`
         },
-        'benefícios|vale|plano|saúde|auxílio': {
-            response: 'Excelente! Você tem acesso a:\n\n💊 Plano de saúde 100% pago pela empresa\n🦷 Plano odontológico (80% empresa)\n🍽️ Vale-refeição R$ 500/mês\n🚌 Vale-transporte 100%\n💻 Cursos/certificações (até R$3.000/ano)\n🏋️ Academia interna gratuita\n\nA Maria de RH pode explicar tudo melhor. Você já preencheu seu cadastro de benefícios?',
-            keywords: ['benefícios|vale|plano|saúde|auxílio']
+        {
+            keywords: ['1-on-1', 'reuniao', 'agendar', 'quinta'],
+            response: `Nossas 1-on-1s são toda quinta às 15:00.
+
+Usamos para:
+- Feedback
+- Planejamento
+- Desenvolvimento
+
+Esse horário funciona para você?`
         },
-        'repouso|férias|licença|dias': {
-            response: 'Você tem direito a 30 dias de férias por ano, conforme a lei. Também temos política de flexibilidade:\n\n• Home office 2 dias por semana (mediante acordo)\n• Horário flexível (com hora cumprida)\n• Bem-estar mental com psicólogo corporativo\n\nVamos conversar sobre como ajeitar seus horários de forma que funcione bem para você e para a equipe.',
-            keywords: ['repouso|férias|licença|dias|home office']
+        {
+            keywords: ['nao sei', 'duvida', 'ajuda', 'confuso'],
+            response: `Sem problemas! Esse é seu momento de aprendizado.
+
+✓ Faça perguntas
+✓ Ninguém nasce sabendo
+✓ O time está aqui para ajudar
+
+Prefiro que pergunte do que erre em silêncio!`
         },
-        'quando|próxima reunião|1-on-1|agendar': {
-            response: 'Ótimo! Vamos fazer nossas 1-on-1s todas as quintas-feiras às 15:00. Nossa primeira é esta semana!\n\nUsamos esse tempo para:\n• Feedback\n• Planejar desenvolvimento\n• Tirar dúvidas\n• Alinhamento de objetivos\n\nVocê está ok com esse horário?',
-            keywords: ['quando|próxima reunião|1-on-1|agendar|quinta']
+        {
+            keywords: ['acesso e-mail', 'vpn', 'acesso corporativo'],
+            response: `Para acesso ao e-mail corporativo e VPN:
+
+1. E-mail: Use suas credenciais do AD (Active Directory). Acesse via Outlook ou webmail.
+2. VPN: Baixe o cliente da intranet e conecte-se com suas credenciais.
+3. Primeiro acesso: Entre em contato com o suporte de TI para configuração inicial.
+
+Se tiver problemas, abra um chamado no portal de suporte.`
         },
-        'não sei|não entendo|dúvida|ajuda': {
-            response: 'Sem problemas! Esse é o seu período de aprendizado. Tenha em mente:\n\n✓ Faça perguntas!\n✓ Ninguém sabe tudo em um trabalho novo\n✓ Seus colegas adoram ajudar\n✓ Documente o que aprender\n\nVem comigo sempre que precisar. Prefiro que você pergunte mil vezes a fazer errado em silêncio!',
-            keywords: ['não sei|não entendo|dúvida|ajuda|confuso']
+        {
+            keywords: ['politicas', 'documentos internos', 'docs'],
+            response: `Os documentos internos e políticas estão disponíveis na intranet:
+
+- Políticas: Seção "Políticas Corporativas" (códigos de conduta, segurança, etc.).
+- Documentos: Pasta compartilhada no Drive ou SharePoint.
+- Acesso: Use suas credenciais corporativas.
+
+Se não conseguir acessar, peça ajuda ao time de TI.`
+        },
+        {
+            keywords: ['suporte tecnico', 'abrir chamado', 'fluxo suporte'],
+            response: `Para abrir um chamado de suporte técnico:
+
+1. Acesse o portal de suporte (link na intranet).
+2. Selecione a categoria (ex.: TI, Infraestrutura).
+3. Descreva o problema detalhadamente.
+4. Prioridade: Baixa, Média, Alta ou Crítica.
+
+O time de TI responderá em até 24h. Para urgências, ligue para a central (ramal 1234).`
+        },
+        {
+            keywords: ['cursos obrigatorios', 'treinamentos'],
+            response: `Cursos obrigatórios para onboarding:
+
+1. Segurança da Informação (conclua em 30 dias).
+2. Código de Conduta Ética.
+3. Treinamento em Produtos da Empresa.
+4. Certificações técnicas (se aplicável ao seu cargo).
+
+Acesse a plataforma de aprendizado (LMS) via intranet. Precisa de prazos ou ajuda para inscrição?`
         }
-    };
-    
-    // Procura por match de keywords
-    for (const [key, {response, keywords}] of Object.entries(responses)) {
-        for (const keyword of keywords) {
-            if (lowerMessage.includes(keyword.split('|')[0]) || lowerMessage.match(keyword)) {
-                return response;
+    ];
+
+    for (const item of responses) {
+        for (const keyword of item.keywords) {
+            if (removeAccents(lowerMessage).includes(removeAccents(keyword))) {
+                return item.response;
             }
         }
     }
-    
-    // Resposta padrão se não encontrar match
-    return 'Ótima pergunta! Pode me dar um pouco mais de contexto? Ou você pode agendar uma 1-on-1 para discutir isso com mais profundidade. Estou sempre disponível para ajudar!';
+
+    return 'Ótima pergunta! Pode me dar um pouco mais de contexto? Estou aqui para ajudar!';
 }
 
 function handleKeyPress(event) {
